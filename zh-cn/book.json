@@ -1,0 +1,13 @@
+{
+    "author": "刘超",
+    "description": "本书讲述了 LCUI 相关概念和知识，以及基本用法。",
+    "generator": "site",
+    "links": {
+        "sidebar": {
+            "LCUI 项目主页": "https://lcui.lc-soft.io"
+        }
+    },
+    "language": "zh",
+    "plugins": ["prism", "-highlight"],
+    "title": "LCUI 编程指南"
+}

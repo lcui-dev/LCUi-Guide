@@ -1,0 +1,4 @@
+{
+    "generator": "site",
+    "plugins": ["prism", "-highlight"]
+}

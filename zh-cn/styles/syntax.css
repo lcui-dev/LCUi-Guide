@@ -1,0 +1,21 @@
+.book code .token.function {
+	color: #0086b3;
+}
+.book code .token.string {
+	color: #183691;
+}
+.book code .token.keyword {
+	color: #a71d5d;
+}
+.book code .token.number {
+	color: #0086b3;
+}
+.book code .token.selector {
+    color: #795da3;
+}
+.book code .token.tag {
+    color: #63a35c;
+}
+.book code .token.attr-name {
+    color: #795da3;
+}

@@ -5,7 +5,6 @@
 ## 一个最小的应用
 
 ``` c
-
 #include <LCUI_Build.h>
 #include <LCUI/LCUI.h>
 #include <LCUI/gui/widget.h>
@@ -22,12 +21,11 @@ int main( int argc, char **argv )
         Widget_Append( root, txt );
         return LCUI_Main();
 }
-
 ```
 
 把它保存为 `helloworld.c` 或其它类似名称，然后用你的编译器编译它，编译成功后运行输出的可执行文件，你会看到如下的效果：
 
-![运行效果](http://lcui.lc-soft.io/static/images/wiki/getting_started_step_1.png)
+![运行效果](../images/getting_started_step_1.png)
 
 那么，这些代码是什么意思呢？
 
@@ -76,7 +74,7 @@ int main( int argc, char **argv )
 
 在原有的代码上补充了几行代码，运行效果如下：
 
-![运行效果](http://lcui.lc-soft.io/static/images/wiki/getting_started_step_2.png)
+![运行效果](../images/getting_started_step_2.png)
 
 继续讲解代码：
 - 为节省后面代码的宽度，定义了一个类型为 `LCUI_StyleSheet` 的 `style` 变量来引用 `txt->custom_style`。每个部件都有四张样式表：style（当前应用的样式）、inherited_style（继承的样式）、custom_style（自定义样式）、cached_style（缓存的样式），style 表是由 inherited_style 和 custom_style 这两张样式表合并而成的，通常为部件添加额外的样式只需要修改 custom_style 表，而其它三张表是由 LCUI 负责生成的，即使手动修改它的内容也会很快还原。
@@ -163,7 +161,7 @@ int main( int argc, char **argv )
 
 以下是程序的运行效果：
 
-![运行效果](http://lcui.lc-soft.io/static/images/wiki/getting_started_step_3.png)
+![运行效果](../images/getting_started_step_3.png)
 
 ## 为界面添加用户交互
 
@@ -178,7 +176,7 @@ int main( int argc, char **argv )
   <resource type="application/font-ttf" src="C:/Windows/Fonts/comic.ttf"/>
   <ui>
     <widget id="text-hello" type="textview" class="text-hello">Hello, World!</widget>
-    <widget id="btn-ok" type="button" text="确定">确定</widget>
+    <widget id="btn-ok" type="button">确定</widget>
   </ui>
 </lcui-app>
 ```
@@ -245,7 +243,7 @@ int main( int argc, char **argv )
 
 以下是该应用程序的运行效果：
 
-![运行效果](http://lcui.lc-soft.io/static/images/wiki/getting_started_step_4.gif)
+![运行效果](../images/getting_started_step_4.gif)
 
 以上供用户操作的只有按钮，接下来将添加文本编辑框，让用户输入自己的内容。
 
@@ -323,4 +321,4 @@ TextEdit_GetTextW() 函数用于取出文本编辑框内的文本，它的第二
 
 以下是该应用程序的运行效果：
 
-![运行效果](http://lcui.lc-soft.io/static/images/wiki/getting_started_step_5.gif)
+![运行效果](../images/getting_started_step_5.gif)
