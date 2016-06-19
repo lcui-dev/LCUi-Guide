@@ -2,5 +2,5 @@
 
 * [Introduction](README.md)
 * [First Chapter](chapter1.md)
-* [Getting Started](getting_started.md)
+* [快速上手](getting_started.md)
 
