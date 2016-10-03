@@ -1,4 +1,5 @@
 {
     "generator": "site",
+    "language": "zh",
     "plugins": ["prism", "-highlight"]
 }
