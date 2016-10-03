@@ -1,6 +1,6 @@
 @import url("syntax.css");
 
-body,.book-summary,.book.font-family-1 {
+body,.book-header,.book-summary,.book.font-family-1 {
     font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft YaHei", sans-serif;
 }
 .book.font-size-2 .book-body .page-inner section {
