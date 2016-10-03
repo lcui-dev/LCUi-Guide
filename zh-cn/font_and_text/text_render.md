@@ -115,7 +115,6 @@ int main( void )
 }
 ```
 
-
 编译运行后，可以在程序所在工作目录下找到 test_string_render.png 文件，打开它可看到如下图所示的内容：
 
 ![绘制出来的文字](../../images/test_string_render.png)
