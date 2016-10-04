@@ -8,6 +8,5 @@
         }
     },
     "language": "zh",
-    "plugins": ["prism", "-highlight"],
     "title": "LCUI 编程指南"
 }
