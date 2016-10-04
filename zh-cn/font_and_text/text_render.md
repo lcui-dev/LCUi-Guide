@@ -55,7 +55,7 @@ int main( void )
 
 ![绘制出来的文字](../../images/test_char_render.png)
 
-在绘制文字时都需要指定字体的 ID，这个 ID 标识了字体的字族和风格，如果要使用默认的字体，可以使用 -1 作为 ID。字体位图数据是 LCUI_FontBitmap 类型，可以用 FontBitmap_Mix() 函数将该字体位图绘制到指定的图像上，该函数支持自定义字体颜色。
+在绘制文字时都需要指定字体的 ID，这个 ID 标识了字体的字族和风格，如果要使用默认的字体，可以使用 -1 作为 ID。字体位图数据是 `LCUI_FontBitmap` 类型，可以用 `FontBitmap_Mix()` 函数将该字体位图绘制到指定的图像上，该函数支持自定义字体颜色。
 
 ## 渲染一段文字
 
@@ -119,6 +119,6 @@ int main( void )
 
 ![绘制出来的文字](../../images/test_string_render.png)
 
-在为 TextLayer 设置文本、修改文字样式后，需要调用 TextLayer_Update() 函数以应用这些更改，该函数的第二个参数是个链表，用于保存文本图层中需要刷新的区域，如果不需要这些数据可以将该参数设置为 NULL。
+在为 TextLayer 设置文本、修改文字样式后，需要调用 `TextLayer_Update()` 函数以应用这些更改，该函数的第二个参数是个链表，用于保存文本图层中需要刷新的区域，如果不需要这些数据可以将该参数设置为 NULL。
 
-TextLayer 提供了 TextLayer_DrawToGraph() 函数用于将文本图层绘制到图像中，第二个参数指定 TextLayer 中需要绘制的区域，第三个参数指定绘制出的内容在图像中的位置。
+TextLayer 提供了 `TextLayer_DrawToGraph()` 函数用于将文本图层绘制到图像中，第二个参数指定 TextLayer 中需要绘制的区域，第三个参数指定绘制出的内容在图像中的位置。

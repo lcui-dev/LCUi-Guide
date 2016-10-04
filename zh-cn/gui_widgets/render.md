@@ -1,8 +1,8 @@
 ## 渲染
 
-本章节将介绍 Widget_Render() 函数的基本用法，Widget_Render() 函数的主要功能是渲染部件内容，LCUI 输出的图形界面都是由该函数渲染出来的。
+本章节将介绍 `Widget_Render()` 函数的基本用法，`Widget_Render()` 函数的主要功能是渲染部件内容，LCUI 输出的图形界面都是由该函数渲染出来的。
 
-Widget_Render() 函数接受两个参数，第一个参数是需渲染的部件，第二个参数是 LCUI_PaintContext 类型的绘制实例数据，它包含 rect 和 canvas 两个成员，rect 用于指定部件中需要渲染的区域，而 canvas 用于接受渲染结果的画板。
+`Widget_Render()` 函数接受两个参数，第一个参数是需渲染的部件，第二个参数是 `LCUI_PaintContext` 类型的绘制实例数据，它包含 rect 和 canvas 两个成员，rect 用于指定部件中需要渲染的区域，而 canvas 是一个用于接受渲染结果的画板。
 
 以下是示例程序：
 
@@ -70,6 +70,6 @@ int main( void )
 
 ![绘制出来的部件](../../images/test_widget_render.png)
 
-在 LCUI 中，一级部件的尺寸是与屏幕对应的，而本实例中 root 部件仅仅充当容器，因为它并没有与屏幕绑定，在调用 Widget_Update() 后尺寸会为 0 x 0，所以实际渲染的对象是 box。
+在 LCUI 中，一级部件的尺寸是与屏幕对应的，而本实例中 root 部件仅仅充当容器，因为它并没有与屏幕绑定，在调用 `Widget_Update()` 后尺寸会为 0 x 0，所以实际渲染的对象是 box。
 
-Widget_Update() 需要按照从父到子的顺序调用，因为子级部件的坐标、宽度等属性的计算依赖父级部件。
+`Widget_Update()` 需要按照从父到子的顺序调用，因为子级部件的坐标、宽度等属性的计算依赖父级部件。

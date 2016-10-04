@@ -69,7 +69,7 @@ int main( int argc, char **argv )
 }
 ```
 
-当有了 XML 和 CSS 文件后，需要让程序载入它们，XML 文件的载入与解析功能由 LCUIBuilder_LoadFile() 函数提供，该函数在 LCUI/gui/builder.h 头文件有声明。如果 XML 文件载入失败，LCUIBuilder_LoadFile() 函数会返回 NULL，如果载入成功则会返回一个部件，这个部件主要用于容纳 &lt;ui&gt; 标签中出现的各个部件，相当于一个容器，对于这个容器，可以先将它追加到根级部件中，然后调用 Widget_Unwrap() 函数展开该部件的内容，在展开后该部件会被销毁。
+当有了 XML 和 CSS 文件后，需要让程序载入它们，XML 文件的载入与解析功能由 `LCUIBuilder_LoadFile()` 函数提供，该函数在 LCUI/gui/builder.h 头文件有声明。如果 XML 文件载入失败，`LCUIBuilder_LoadFile()` 函数会返回 NULL，如果载入成功则会返回一个部件，这个部件主要用于容纳 &lt;ui&gt; 标签中出现的各个部件，相当于一个容器，对于这个容器，可以先将它追加到根级部件中，然后调用 `Widget_Unwrap()` 函数展开该部件的内容，在展开后该部件会被销毁。
 
 以下是程序的运行效果：
 

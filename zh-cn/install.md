@@ -12,7 +12,7 @@
 	cd LCUI
 	./configure
 
-如果未找到 configure，请运行 autogen.sh 脚本生成它。
+在用 git 下载好 LCUI 的代码库后，进入 LCUI 目录运行 configure 脚本，如果未找到 configure，请运行 autogen.sh 脚本生成它。
 
 在 configure 脚本执行完后，运行以下命令编译源代码并安装 LCUI 的函数库和头文件：
 
@@ -42,8 +42,8 @@
 ## 在 Windows 中构建
 
 LCUI 主要是在 Windows 系统环境下开发的，你可以使用 VisualStudio 打开 
-/build/VS2012/LCUI.sln 文件，然后在 VisualStudio 的菜单中选择 生成 -> 生成解决方案 来编译生成 LCUI。如果你用的是其它 IDE，请尝
+/build/VS2012/LCUI.sln 文件，然后在 VisualStudio 的菜单中选择 `生成 -> 生成解决方案` 来编译生成 LCUI。如果你用的是其它 IDE，请尝
 试按该 IDE 的方式创建项目并将源文件添加至项目内，然后编译。
 
-上述的依赖库除 windows 用不到的 libx11 库外，都可以在 Windows 系统环境下编译生成，如果觉得手动编译它们很
+上述的依赖库中除 Windows 系统用不到的 libx11 库外，都可以在 Windows 系统环境下编译生成，如果觉得手动编译它们很
 麻烦，想要现成可用的依赖库和头文件，可以在网上搜索，或者联系作者。
