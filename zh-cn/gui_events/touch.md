@@ -1,6 +1,6 @@
 ## 触控事件
 
-LCUI 支持触控事件，但目前仅在 windows 系统中有效，以下是触控事件的数据结构定义：
+LCUI 支持触控事件，但目前仅在 Windows 系统中有效，以下是触控事件的数据结构定义：
 
 ``` c
 typedef struct LCUI_TouchPointRec_ {
@@ -19,7 +19,7 @@ typedef struct LCUI_TouchEvent_ {
 typedef LCUI_TouchEvent LCUI_WidgetTouchEvent;
 ```
 
-触控事件的数据结构设计参考自 Windows API，并没有做多大改动，LCUI 内部的触控事件和部件级的触控事件是一样的。
+触控事件的数据结构设计参考自 Windows API，并没有做多大改动，LCUI 内部的触控事件和部件级的触控事件是一样的数据结构。
 
 从上述代码中可以比较容易的理解到：触控事件包含多个触点的信息，n_points 表示当前共有多少个触点，每个触点都有自己的 x、y 坐标，并且有个 id 用于标识该触点，而 state 表示该触点的状态，它的值有三种：WET_TOUCHDOWN、WET_TOUCHUP、WET_TOUCHMOVE，这些值分别对应：触点按下、触点释放、触点移动这三个状态。
 
@@ -54,7 +54,7 @@ static void OnTouchWidget( LCUI_Widget w, LCUI_WidgetEvent e, void *arg )
                 return;
         }
         binding = e->data;
-        point = & e->touch.points[0];
+        point = &e->touch.points[0];
         switch( point->state ) {
         case WET_TOUCHMOVE:
                 Widget_Move( binding->widget, point->x - 32, point->y - 32 );

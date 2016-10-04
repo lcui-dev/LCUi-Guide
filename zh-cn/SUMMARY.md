@@ -13,4 +13,5 @@
    * [5.1 触控事件](gui_events/touch.md)
 * [6. 字体与文字](font_and_text/README.md)
    * [6.1 字体管理](font_and_text/font_manage.md)
-   * [6.2 文字渲染](font_and_text/text_render.md)
+   * [6.2 渲染一个字](font_and_text/render_char.md)
+   * [6.3 渲染一段文字](font_and_text/render_string.md)
