@@ -84,10 +84,78 @@ typedef struct LCUI_WidgetPrototypeRec_ {
 
 部件原型可以使用 `LCUIWidget_NewPrototype()` 函数创建，共需要两个参数，第一个参数是指定原型的名称，第二个参数是指定继承的父级原型。
 
-部件的私有数据可以用 `Widget_AddData()` 函数添加，函数原型如下：
+### 基本用法
+
+创建部件原型需要用到 `LCUIWidget_NewPrototype()` 函数，函数原型如下：
 
 ``` c
-void *Widget_AddData( LCUI_Widget widget, LCUI_WidgetPrototype proto, size_t data_size )
+LCUI_WidgetPrototype LCUIWidget_NewPrototype( const char *name,
+                                              const char *parent_name );
 ```
 
-私有数据是与部件原型绑定的，添加时需要指定具体的内存占用大小。添加后，可以调用 `Widget_GetData()` 函数获取私有数据，这个函数也同样需要指定原型。
+需要的参数有两个：原型的名称、继承的父级原型的名称，创建完后会返回部件原型，如果
+已经存在同名的部件原型或者原型添加失败，则会返回 NULL。以下代码展示了部件原型的常规创建方法，如需详尽的参考代码请查阅 LCUI 预置部件的代码（例如：/src/gui/widget/textview.c）。
+
+``` c
+#include <LCUI_Build.h>
+#include <LCUI/LCUI.h>
+#include <LCUI/gui/widget.h>
+
+static struct MyWidgetModule {
+        LCUI_WidgetPrototype prototype;
+        // 其它用得到的数据
+        // xxxx
+        // ...
+} self;
+
+static void MyWidget_OnInit( LCUI_Widget w )
+{
+        // 初始化一些数据
+}
+
+static void MyWidget_OnDestroy( LCUI_Widget w )
+{
+        // 释放相关数据
+}
+
+static void MyWidget_UpdateStyle( LCUI_Widget w )
+{
+        // 处理扩展的样式属性
+}
+
+static void MyWidget_AutoSize( LCUI_Widget w, int *width, int *height )
+{
+        // 根据自身的内容，计算合适的尺寸
+}
+
+static void MyWidget_OnTask( LCUI_Widget w )
+{
+        // 处理积累的任务
+}
+
+static void MyWidget_OnPaint( LCUI_Widget w, LCUI_PaintContext paint )
+{
+        // 利用 paint 上下文绘制自己的内容
+}
+
+static void MyWidget_OnParseText( LCUI_Widget w, const char *text )
+{
+        // 处理 XML 解析器传来的文本内容
+}
+
+void LCUIWidget_AddMyWidget( void )
+{
+        int i;
+        self.prototype = LCUIWidget_NewPrototype( "mywidget", NULL );
+        self.prototype->init = MyWidget_OnInit;
+        self.prototype->paint = MyWidget_OnPaint;
+        self.prototype->destroy = MyWidget_OnDestroy;
+        self.prototype->autosize = MyWidget_AutoSize;
+        self.prototype->update = MyWidget_UpdateStyle;
+        self.prototype->settext = MyWidget_OnParseText;
+        self.prototype->runtask = MyWidget_OnTask;
+        // 如果需要用到全局的数据的话
+        // self.xxxx = ???
+        // ...
+}
+```

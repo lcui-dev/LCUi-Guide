@@ -4,7 +4,8 @@
     "generator": "site",
     "links": {
         "sidebar": {
-            "LCUI 项目主页": "https://lcui.lc-soft.io"
+            "LCUI 项目主页": "https://lcui.lc-soft.io",
+            "参与改进此文档": "https://github.com/lc-soft/LCUI-Guide"
         }
     },
     "language": "zh",
