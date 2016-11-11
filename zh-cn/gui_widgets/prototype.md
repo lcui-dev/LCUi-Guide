@@ -82,8 +82,6 @@ typedef struct LCUI_WidgetPrototypeRec_ {
 
 父级原型，用于访问父级原型的方法，这个属性不需要手动设置。
 
-部件原型可以使用 `LCUIWidget_NewPrototype()` 函数创建，共需要两个参数，第一个参数是指定原型的名称，第二个参数是指定继承的父级原型。
-
 ### 基本用法
 
 创建部件原型需要用到 `LCUIWidget_NewPrototype()` 函数，函数原型如下：
