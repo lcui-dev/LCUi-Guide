@@ -18,6 +18,7 @@
    * [6.1 字体管理](font_and_text/font_manage.md)
    * [6.2 渲染一个字](font_and_text/render_char.md)
    * [6.3 渲染一段文字](font_and_text/render_string.md)
+   * [6.4 图标字体](font_and_text/render_icon_font.md)
 * [7. 驱动程序](driver/README.md)
    * [7.1 事件循环](driver/events.md)
    * [7.2 图形输出](driver/display.md)
