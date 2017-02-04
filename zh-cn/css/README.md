@@ -11,7 +11,7 @@ LCUI 的 CSS 解析器与浏览器中的有一定的差异，受限于 LCUI 现�
 - class 选择器：`.button { padding: 5px 10px; }`
 - id 选择器：`#name { background-color: #fff; }`
 - 交集选择器：`textview#test.link { color: #f00; }`
-- 多元素选择器：`textview, textedit { line-height: 1.42; }`
+- 并集选择器：`textview, textedit { line-height: 1.42; }`
 - 后代元素选择器：`.container button .text { border: 1px solid #000; }`
 - 伪类选择器：`button:hover { background-color: #eee; }`
 - 选择器权重值计算。样式表的选择器具体性越明确，权重值越高。
