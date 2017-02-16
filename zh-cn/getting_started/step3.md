@@ -18,7 +18,7 @@ textview.text-hello {
 
 这里的 CSS 代码对于有写过网页的人来说应该很容易理解，如果你对 CSS 代码的语法规则并不了解，可以参考网上的相关教程。LCUI 虽然支持 CSS 代码，但与网页浏览器不同，只支持处理简单的 CSS 样式，并且某些 CSS 样式的实际效果会根据 LCUI 的现有情况做一定的调整，属于定制版的 CSS。
 
-textview.text-hello 是选择器，textview 指的是部件类型，而 .text-hello 指的是样式类，也就是说 {} 花括号里的 CSS 样式只对拥有 text-hello 类的 textview 部件有效。
+`textview.text-hello` 是选择器，其中 textview 指的是部件类型，而 `.text-hello` 指的是样式类，也就是说 `{}` 花括号里的 CSS 样式只对拥有 text-hello 类的 textview 部件有效。
 
 color、font-size、font-family、text-align 这四个属性是 textview 部件扩展的属性，仅对 textview 类型的部件有效，分别用于设置文字的颜色、字体大小、字族名称、对齐方式。
 

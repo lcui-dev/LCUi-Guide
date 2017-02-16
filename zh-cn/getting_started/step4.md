@@ -77,7 +77,7 @@ int main( int argc, char **argv )
 - 为按钮绑定点击（click）事件，事件处理函数为 `OnBtnClick()`，附加的数据是 txt，该数据不需要析构函数，所以设为 NULL。
 - 在 `OnBtnClick()` 函数中，第一个参数是绑定该事件的部件，第二个参数是事件相关的数据，第三个是触发该事件时传递的额外参数，这个参数通常用不到。
 - 绑定事件时保存的附加数据存在于 data 成员变量中，即：`e->data` 。
-- `TextView_SetTextW()` 函数是 `TextView_SetText()` 函数的宽字符版本，它的第二个参数是类型为 `wchar_t*` 的指针，这里设置的文本内容包含中文，由于 `TextView_SetText()` 函数是默认将第二个参数作为 UTF-8 编码的字符串进行处理的，而 Windows 系统的编译器会将字符串以 ANSI 编码方式存储，为避免乱码，所以改用宽版本的 `TextView_SetTextW()` 函数。
+- `TextView_SetTextW()` 函数是 `TextView_SetText()` 函数的宽字符版本，它的第二个参数是类型为 `wchar_t*` 的指针，这里设置的文本内容包含中文，由于 `TextView_SetText()` 函数是默认将第二个参数作为 UTF-8 编码的字符串进行处理的，而 Windows 系统的编译器会将字符串以 ANSI 编码方式存储，为避免乱码，所以改用宽字符版本的 `TextView_SetTextW()` 函数。
 
 以下是该应用程序的运行效果：
 
