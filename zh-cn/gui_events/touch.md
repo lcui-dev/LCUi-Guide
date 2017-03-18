@@ -19,7 +19,7 @@ typedef struct LCUI_TouchEvent_ {
 typedef LCUI_TouchEvent LCUI_WidgetTouchEvent;
 ```
 
-触控事件的数据结构设计参考自 Windows API，并没有做多大改动，LCUI 内部的触控事件和部件级的触控事件是一样的数据结构。
+触控事件的数据结构设计参考自 Windows API，只保留了主要的成员变量。LCUI 内部的触控事件和部件级的触控事件是一样的数据结构。
 
 从上述代码中可以比较容易的理解到：触控事件包含多个触点的信息，n_points 表示当前共有多少个触点，每个触点都有自己的 x、y 坐标，并且有个 id 用于标识该触点，而 state 表示该触点的状态，它的值有三种：WET_TOUCHDOWN、WET_TOUCHUP、WET_TOUCHMOVE，这些值分别对应：触点按下、触点释放、触点移动这三个状态。
 

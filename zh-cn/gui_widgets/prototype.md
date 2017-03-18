@@ -50,7 +50,7 @@ typedef struct LCUI_WidgetPrototypeRec_ {
 
 对于某些部件而言，预置的 CSS 样式属性无法满足需求，会需要用到扩展样式，而这些
 扩展样式的处理方法是 LCUI 无法知道的，因此，LCUI 在处理完预置的样式属性后，会
-将样式处理任务交给 `update()` 函数。
+将剩余的样式处理任务交给 `update()` 函数。
 
 ** runtask **
 

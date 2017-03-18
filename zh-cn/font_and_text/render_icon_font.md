@@ -6,7 +6,7 @@
 
 ![图标字体](../../images/font_icons.png)
 
-通常在程序中直接使用图标字体需要先查找图标对应的 unicode 码然后写在代码里，虽然可以靠宏定义代替图标的 unicode 码来提升代码可读性，但这种还是做法比较麻烦。幸好 LCUI 支持 CSS，我们可以靠预先定义在 CSS 代码中的样式类（class）来使用图标，图标样式类相比于 unicode 码语意明确，书写更直观，可以很容易分辨这个图标大致是什么内容，并且在向图标字体增加新图标后只需要更新 CSS 代码。
+通常在程序中直接使用图标字体需要先查找图标对应的 unicode 码然后写在代码里，虽然可以靠宏定义代替图标的 unicode 码来提升代码可读性，但这种做法依然比较麻烦。幸好 LCUI 支持 CSS，我们可以靠预先定义在 CSS 代码中的样式类（class）来使用图标，图标样式类相比于 unicode 码语意明确，书写更直观，可以很容易分辨这个图标大致是什么内容，并且在向图标字体增加新图标后只需要更新 CSS 代码。
 
 常见的图标字体有 [FontAwesome](http://fontawesome.io/icons/) 和 [Material Design Icons](https://materialdesignicons.com/)，如果觉得这些图标不够用，或者用不到这么多图标想精简体积，可以试试在线图标打包服务，例如：[Iconmoon](https://icomoon.io/)、[阿里巴巴矢量图标库](http://www.iconfont.cn/)。
 
