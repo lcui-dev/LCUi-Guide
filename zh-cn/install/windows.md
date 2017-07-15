@@ -1,0 +1,156 @@
+# 在 Windows 系统中安装
+
+通常，LCUI 每次版本更新时都会提供编译好的 LCUI 库及依赖库，你可以直接下载使用。如果你出于某些原因（例如：编译64位版本）需要手动编译一次 LCUI，那么请继续阅读以下内容。
+
+## 编译依赖项
+
+编译依赖库比较麻烦，以下列出了大致的编译方法，源码包可以在它们的官网中下载到，有的项目会提供 VisualStudio 工程文件，你可以直接打开它然后编译生成它。
+
+### libpng
+
+- 项目主页：http://www.libpng.org/pub/png/libpng.html
+- 工程文件：projects/vstudio/vstudio.sln
+
+### freetype
+
+- 项目主页：https://www.freetype.org/
+- 工程文件：builds/windows/vc2010/freetype.sln
+
+### jpeg
+
+项目主页：http://www.ijg.org/
+
+jpeg 库没有提供现成的 sln 工程文件，你需要按照以下步骤手动生成它。
+
+* 打开开始菜单，找到 Visual Studio 的目录
+* 打开目录里的 VisualStudio 提供的开发人员命令提示工具
+* 在出现的命令窗口中使用 cd 命令切换目录到 jpeg 源码目录
+* 运行命令：`nmake -f makefile.vc setup-v10`
+* 关闭命令窗口
+* 在源码目录中可看到生成的 jpeg.sln 文件
+
+### libxml2
+
+- 项目主页：http://xmlsoft.org/
+- 工程文件：win32/VC10/libxml2.slh
+
+如果你想对 libxml2 进行裁剪，你可以在源码目录里的 win32 目录中运行以下命令：
+
+    cscript configure.js 
+
+可以看到如下输出：
+
+```
+Microsoft (R) Windows Script Host Version 5.812
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+libxml2 version: 2.9.4
+Created Makefile.
+Created config.h.
+
+XML processor configuration
+---------------------------
+              Trio: no
+     Thread safety: native
+        FTP client: yes
+       HTTP client: yes
+    HTML processor: yes
+      C14N support: yes
+   Catalog support: yes
+   DocBook support: yes
+     XPath support: yes
+  XPointer support: yes
+  XInclude support: yes
+     iconv support: yes
+     icu   support: no
+  iso8859x support: no
+      zlib support: no
+      lzma support: no
+  Debugging module: yes
+  Memory debugging: no
+ Runtime debugging: no
+    Regexp support: yes
+    Module support: yes
+      Tree support: yes
+    Reader support: yes
+    Writer support: yes
+    Walker support: yes
+   Pattern support: yes
+      Push support: yes
+Validation support: yes
+      SAX1 support: yes
+    Legacy support: yes
+    Output support: yes
+XML Schema support: yes
+Schematron support: yes
+   Python bindings: no
+
+Win32 build configuration
+-------------------------
+          Compiler: msvc
+  C-Runtime option: /MD
+    Embed Manifest: no
+     Debug symbols: no
+    Static xmllint: no
+    Install prefix: .
+      Put tools in: $(PREFIX)\bin
+    Put headers in: $(PREFIX)\include
+Put static libs in: $(PREFIX)\lib
+Put shared libs in: $(PREFIX)\bin
+      Include path: .
+          Lib path: .
+```
+
+其中 FTP 客户端、HTTP 客户端、HTML 处理器等模块是用不到的，可以使用以下命令禁用掉它们：
+
+    cscript configure.js ftp=no http=no html=no legacy=no iconv=no catalog=no docb=no
+
+该脚本会更新 config.h 文件，重新编译 libxml2 即可应用此次裁剪。
+
+
+## 编译 LCUI
+
+LCUI 主要是在 Windows 系统环境下开发的，你可以使用 [VisualStudio](https://www.visualstudio.com) 打开 `build/windows/LCUI.sln` 文件，在编译前，你需要将依赖项的库文件和头文件放在源码目录中的 vendor 目录中，目录结构如下：
+
+    vendor/include
+    vendor/lib
+
+之后，在 VisualStudio 的菜单中选择 `生成 -> 生成解决方案` 来编译生成 LCUI。如果你用的是其它 IDE，请尝
+试按该 IDE 的方式创建项目并将源文件添加至项目内，然后配置好依赖项再编译。
+
+## 安装 LCUI
+
+你可以建立一个专门的目录存放 LCUI 的库文件和头文件，例如：`D:/c-dev/`，但如果你的项目需要给其他人编译的话，我们建议你设置一个相对目录，例如在源码目录里建立一个 vendor 目录，这样其他人要编译你的项目时，只需要把 LCUI 库文件和头文件复制到 vendor 目录里，无需手动修改配置。
+
+## 配置
+
+每次新建 LCUI 应用项目时，你都需要手动为项目修改如下配置。看上去很麻烦，如果你感兴趣可以参考[这篇文章](https://msdn.microsoft.com/zh-cn/library/6db0hwky.aspx)为 VisualStudio 添加 LCUI 应用程序模板。
+
+**C/C++ > 常规 > 附加包含目录**
+
+将该项设置为：`$(SolutionDir)vendor\include\`，如果你的 VisualStudio 工程文件不是建立在源码根目录下，例如：`/build/windows/project.sln`，那么请手动调整该配置项。
+
+**链接器 > 常规 > 附加库目录**
+
+将该项设置为：`$(OutDir)`，即：将 exe 输出目录作为附加库目录。
+
+**输入 > 附加依赖项**
+
+如果你的应用是：
+
+- Windows 通用应用，请将该项设置为：`LCUI.lib; LCUIMain.lib`
+- Windows 桌面应用，请将该项设置为：`LCUI.lib; LCUIApp.lib`
+
+**生成事件 > 预先生成事件**
+
+将该项设置为：
+
+	copy $(SolutionDir)vendor\lib\LCUI*.lib $(OutDir)
+	copy $(SolutionDir)vendor\lib\LCUI*.dll $(OutDir)
+
+如果你的应用是 Windows 通用应用，那么请将该项设置为：
+
+	copy $(SolutionDir)vendor\lib\uwp\LCUI*.lib $(OutDir)
+	copy $(SolutionDir)vendor\lib\uwp\LCUI*.dll $(OutDir)
+
+在编译、调试或运行应用时，需要让 lib、dll 文件和 exe 在一个目录，方便链接器能够找到它们。
