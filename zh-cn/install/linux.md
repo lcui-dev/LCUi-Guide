@@ -1,6 +1,6 @@
 # 在 Linux 系统中安装
 
-这里假设你已经拥有完整的开发环境，包括构建此项目所需的相关工具，如果你在按照本章节的方法构建本项目时发现缺少某些工具，请自行安装它们。
+这里假设你已经拥有完整的开发环境，包括构建此项目所需的相关工具（例如：gcc、automake），如果你在按照本章节的方法构建本项目时发现缺少某些工具，请自行安装它们。
 
 ## 安装依赖项
 
@@ -27,5 +27,18 @@
 	cd test
 	make
 
-至此，你已经完成了 LCUI 开发环境的搭建，接下来你可以开始尝试[编写 Hello World](../getting_started/step1.html)。
+## 配置
 
+为编译器添加参数，指定 LCUI 的头文件和库文件的查找位置，例如：
+
+	gcc -c test.c `pkg-config --cflags lcui`
+	gcc –o test.o test `pkg-config --libs lcui`
+
+通常情况下，你也可以直接用以下方法：
+
+	gcc -c test.c
+	gcc –o test.o test -lLCUI
+
+## 完成
+
+至此，你已经完成了 LCUI 开发环境的搭建，接下来你可以开始尝试[编写 Hello World](../getting_started/step1.html)。

@@ -32,7 +32,7 @@ jpeg 库没有提供现成的 sln 工程文件，你需要按照以下步骤手�
 ### libxml2
 
 - 项目主页：http://xmlsoft.org/
-- 工程文件：win32/VC10/libxml2.slh
+- 工程文件：win32/VC10/libxml2.sln
 
 如果你想对 libxml2 进行裁剪，你可以在源码目录里的 win32 目录中运行以下命令：
 
@@ -106,7 +106,6 @@ Put shared libs in: $(PREFIX)\bin
     cscript configure.js ftp=no http=no html=no legacy=no iconv=no catalog=no docb=no
 
 该脚本会更新 config.h 文件，重新编译 libxml2 即可应用此次裁剪。
-
 
 ## 编译 LCUI
 
