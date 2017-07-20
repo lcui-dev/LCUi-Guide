@@ -127,7 +127,7 @@ LCUI 主要是在 Windows 系统环境下开发的，你可以使用 [VisualStud
 
 **C/C++ > 常规 > 附加包含目录**
 
-将该项设置为：`$(SolutionDir)vendor\include\`，如果你的 VisualStudio 工程文件不是建立在源码根目录下，例如：`/build/windows/project.sln`，那么请手动调整该配置项。
+将该项设置为：`$(SolutionDir)vendor\include`，如果你的 VisualStudio 工程文件不是建立在源码根目录下，例如：`/build/windows/project.sln`，那么请手动调整该配置项。
 
 **链接器 > 常规 > 附加库目录**
 
@@ -135,10 +135,7 @@ LCUI 主要是在 Windows 系统环境下开发的，你可以使用 [VisualStud
 
 **输入 > 附加依赖项**
 
-如果你的应用是：
-
-- Windows 通用应用，请将该项设置为：`LCUI.lib; LCUIMain.lib`
-- Windows 桌面应用，请将该项设置为：`LCUI.lib; LCUIApp.lib`
+将该项设置为：`LCUI.lib; LCUIMain.lib`
 
 **生成事件 > 预先生成事件**
 
@@ -147,9 +144,29 @@ LCUI 主要是在 Windows 系统环境下开发的，你可以使用 [VisualStud
 	copy $(SolutionDir)vendor\lib\LCUI*.lib $(OutDir)
 	copy $(SolutionDir)vendor\lib\LCUI*.dll $(OutDir)
 
-如果你的应用是 Windows 通用应用，那么请将该项设置为：
+在编译、调试或运行应用时，需要让 lib、dll 文件和 exe 在一个目录，方便链接器能够找到它们。
+
+### Windows 通用应用
+
+如果你的应用是 Windows 通用应用，那么在以上配置的基础上再做如下修改。
+
+**输入 > 附加依赖项**
+
+将该项设置为：`LCUI.lib; LCUIApp.lib`
+
+**生成事件 > 预先生成事件**
+
+将该项设置为：
 
 	copy $(SolutionDir)vendor\lib\uwp\LCUI*.lib $(OutDir)
 	copy $(SolutionDir)vendor\lib\uwp\LCUI*.dll $(OutDir)
 
-在编译、调试或运行应用时，需要让 lib、dll 文件和 exe 在一个目录，方便链接器能够找到它们。
+LCUI 的 Windows 通用应用版的库文件存放在 uwp 目录里。
+
+**文件**
+
+右键单击项目名称，然后选择 `添加 > 现有项...`，在文件选择器中选择 LCUI.dll 和 LCUIApp.dll 文件。添加后，右键点击这些文件并选择 `属性`，将 `常规 > 内容` 设置为 `是`。
+
+## 完成
+
+至此，你已经知道了 LCUI 的安装和编译方法，以及 LCUI 应用程序项目的配置方法，接下来你可以开始尝试[编写 Hello World](../getting_started/step1.html)。
