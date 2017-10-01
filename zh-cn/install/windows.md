@@ -4,21 +4,24 @@
 
 ## 编译依赖项
 
-编译依赖库比较麻烦，以下列出了大致的编译方法，源码包可以在它们的官网中下载到，有的项目会提供 VisualStudio 工程文件，你可以直接打开它然后编译生成它。
+编译依赖库比较麻烦，以下列出了大致的编译方法，源码包可以在它们的官网中下载到，有的项目会提供 VisualStudio 工程文件，你可以直接打开它然后编译生成它，编译完后需要将它们提供的头文件复制到编译器能找到的目录，或者你自定义的头文件目录里。
 
 ### libpng
 
 - 项目主页：http://www.libpng.org/pub/png/libpng.html
 - 工程文件：projects/vstudio/vstudio.sln
+- 头文件：png.h、pngconfig.h、pnglibconf.h
 
 ### freetype
 
 - 项目主页：https://www.freetype.org/
 - 工程文件：builds/windows/vc2010/freetype.sln
+- 头文件：include/ft2build.h、include/freetype
 
 ### jpeg
 
-项目主页：http://www.ijg.org/
+- 项目主页：http://www.ijg.org/
+- 头文件：jconfig.h、jmorecfg.h、jerror.h、jpeglib.h
 
 jpeg 库没有提供现成的 sln 工程文件，你需要按照以下步骤手动生成它。
 
@@ -29,10 +32,13 @@ jpeg 库没有提供现成的 sln 工程文件，你需要按照以下步骤手�
 * 关闭命令窗口
 * 在源码目录中可看到生成的 jpeg.sln 文件
 
+如果在运行 nmake 命令后出现提示 `未找到文件“win32.mak”`，请复制 `C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\Include` 目录下的 win32.mak 文件到 jpeg 源码目录里，然后重试。
+
 ### libxml2
 
 - 项目主页：http://xmlsoft.org/
 - 工程文件：win32/VC10/libxml2.sln
+- 头文件：include/libxml
 
 如果你想对 libxml2 进行裁剪，你可以在源码目录里的 win32 目录中运行以下命令：
 
@@ -106,6 +112,10 @@ Put shared libs in: $(PREFIX)\bin
     cscript configure.js ftp=no http=no html=no legacy=no iconv=no catalog=no docb=no
 
 该脚本会更新 config.h 文件，重新编译 libxml2 即可应用此次裁剪。
+
+如果在编译过程中有出现错误说 `int32_t int64_t uint64_t` 这类数据类型没有定义，请尝试复制 `win32/VC10` 目录下的 config.h 文件至源码根目录并覆盖同名文件，然后再尝试重新编译。
+
+如果你发现编译生成的 libxml2 有 .exe 和 .lib 文件，请检查它的项目配置中的 `常规 > 配置类型` 这项的值是否为 `静态库(.lib)` 或 `动态库(.dll)`。
 
 ## 编译 LCUI
 
