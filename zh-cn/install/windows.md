@@ -4,7 +4,9 @@
 
 ## 编译依赖项
 
-编译依赖库比较麻烦，以下列出了大致的编译方法，源码包可以在它们的官网中下载到，有的项目会提供 VisualStudio 工程文件，你可以直接打开它然后编译生成它，编译完后需要将它们提供的头文件复制到编译器能找到的目录，或者你自定义的头文件目录里。
+在 Windows 上手动编译安装依赖库比较麻烦，不过，[vcpkg](https://github.com/Microsoft/vcpkg) 可以解决这种问题，你可以尝试使用它安装这些依赖项。
+
+以下列出了大致的编译方法，源码包可以在它们的官网中下载到，有的项目会提供 VisualStudio 工程文件，你可以直接打开它然后编译生成它，在编译完后需要将它们提供的头文件复制到编译器能找到的目录。
 
 ### libpng
 
@@ -46,7 +48,7 @@ jpeg 库没有提供现成的 sln 工程文件，你需要按照以下步骤手�
 
 可以看到如下输出：
 
-```
+``` text
 Microsoft (R) Windows Script Host Version 5.812
 版权所有(C) Microsoft Corporation。保留所有权利。
 
@@ -135,47 +137,47 @@ LCUI 主要是在 Windows 系统环境下开发的，你可以使用 [VisualStud
 
 每次新建 LCUI 应用项目时，你都需要手动为项目修改如下配置。看上去很麻烦，如果你感兴趣可以参考[这篇文章](https://msdn.microsoft.com/zh-cn/library/6db0hwky.aspx)为 VisualStudio 添加 LCUI 应用程序模板。
 
-**C/C++ > 常规 > 附加包含目录**
+- **C/C++ > 常规 > 附加包含目录**
 
-将该项设置为：`$(SolutionDir)vendor\include`，如果你的 VisualStudio 工程文件不是建立在源码根目录下，例如：`/build/windows/project.sln`，那么请手动调整该配置项。
+    将该项设置为：`$(SolutionDir)vendor\include`，如果你的 VisualStudio 工程文件不是建立在源码根目录下，例如：`/build/windows/project.sln`，那么请手动调整该配置项。
 
-**链接器 > 常规 > 附加库目录**
+- **链接器 > 常规 > 附加库目录**
 
-将该项设置为：`$(OutDir)`，即：将 exe 输出目录作为附加库目录。
+    将该项设置为：`$(OutDir)`，即：将 exe 输出目录作为附加库目录。
 
-**输入 > 附加依赖项**
+- **输入 > 附加依赖项**
 
-将该项设置为：`LCUI.lib; LCUIMain.lib`
+    将该项设置为：`LCUI.lib; LCUIMain.lib`
 
-**生成事件 > 预先生成事件**
+- **生成事件 > 预先生成事件**
 
-将该项设置为：
+    将该项设置为：
 
-	copy $(SolutionDir)vendor\lib\LCUI*.lib $(OutDir)
-	copy $(SolutionDir)vendor\lib\LCUI*.dll $(OutDir)
+        copy $(SolutionDir)vendor\lib\LCUI*.lib $(OutDir)
+        copy $(SolutionDir)vendor\lib\LCUI*.dll $(OutDir)
 
-在编译、调试或运行应用时，需要让 lib、dll 文件和 exe 在一个目录，方便链接器能够找到它们。
+    在编译、调试或运行应用时，需要让 lib、dll 文件和 exe 在一个目录，方便链接器能够找到它们。
 
 ### Windows 通用应用
 
-如果你的应用是 Windows 通用应用，那么在以上配置的基础上再做如下修改。
+如果你的应用是 Windows 通用应用，那么你需要在以上配置的基础上再做如下修改。
 
-**输入 > 附加依赖项**
+- **输入 > 附加依赖项**
 
-将该项设置为：`LCUI.lib; LCUIApp.lib`
+    将该项设置为：`LCUI.lib; LCUIApp.lib`
 
-**生成事件 > 预先生成事件**
+- **生成事件 > 预先生成事件**
 
-将该项设置为：
+    将该项设置为：
 
-	copy $(SolutionDir)vendor\lib\uwp\LCUI*.lib $(OutDir)
-	copy $(SolutionDir)vendor\lib\uwp\LCUI*.dll $(OutDir)
+        copy $(SolutionDir)vendor\lib\uwp\LCUI*.lib $(OutDir)
+        copy $(SolutionDir)vendor\lib\uwp\LCUI*.dll $(OutDir)
 
-LCUI 的 Windows 通用应用版的库文件存放在 uwp 目录里。
+    LCUI 的 Windows 通用应用版的库文件存放在 uwp 目录里。
 
-**文件**
+- **文件**
 
-右键单击项目名称，然后选择 `添加 > 现有项...`，在文件选择器中选择 LCUI.dll 和 LCUIApp.dll 文件。添加后，右键点击这些文件并选择 `属性`，将 `常规 > 内容` 设置为 `是`。
+    右键单击项目名称，然后选择 `添加 > 现有项...`，在文件选择器中选择 LCUI.dll 和 LCUIApp.dll 文件。添加后，右键点击这些文件并选择 `属性`，将 `常规 > 内容` 设置为 `是`。
 
 ## 完成
 
