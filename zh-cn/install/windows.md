@@ -30,7 +30,7 @@ jpeg 库没有提供现成的 sln 工程文件，你需要按照以下步骤手�
 * 打开开始菜单，找到 Visual Studio 的目录
 * 打开目录里的 VisualStudio 提供的开发人员命令提示工具
 * 在出现的命令窗口中使用 cd 命令切换目录到 jpeg 源码目录
-* 运行命令：`nmake -f makefile.vc setup-v10`
+* 运行命令：`nmake -f makefile.vc setup-v15`
 * 关闭命令窗口
 * 在源码目录中可看到生成的 jpeg.sln 文件
 
@@ -111,13 +111,13 @@ Put shared libs in: $(PREFIX)\bin
 
 其中 FTP 客户端、HTTP 客户端、HTML 处理器等模块是用不到的，可以使用以下命令禁用掉它们：
 
-    cscript configure.js ftp=no http=no html=no legacy=no iconv=no catalog=no docb=no
+    cscript configure.js ftp=no http=no html=no legacy=no iconv=no catalog=no docb=no modules=no
 
-该脚本会更新 config.h 文件，重新编译 libxml2 即可应用此次裁剪。
+之后开始编译：
 
-如果在编译过程中有出现错误说 `int32_t int64_t uint64_t` 这类数据类型没有定义，请尝试复制 `win32/VC10` 目录下的 config.h 文件至源码根目录并覆盖同名文件，然后再尝试重新编译。
+    nmake /f Makefile.msvc
 
-如果你发现编译生成的 libxml2 有 .exe 和 .lib 文件，请检查它的项目配置中的 `常规 > 配置类型` 这项的值是否为 `静态库(.lib)` 或 `动态库(.dll)`。
+文件会输出到 `bin.msvc` 目录下，这些编译方法在 Readme.txt 文件中有说明。
 
 ## 编译 LCUI
 
