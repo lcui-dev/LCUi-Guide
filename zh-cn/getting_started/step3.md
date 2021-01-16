@@ -1,9 +1,8 @@
-
-## 简化界面描述代码
+# 简化界面描述代码
 
 上一章节介绍了如何用 C 代码描述界面效果，只是实现简单的效果的话，这代码看上去还行，但如果需要描述复杂点的界面的话，写出来的 C 代码会变得臃肿且难以阅读和维护，为解决这个问题，可以改用 XML 和 CSS。以下是 CSS 代码，请将其保存为 helloworld.css 文件。
 
-``` css
+```css
 textview.text-hello {
   color: #8cc63f;
   font-size: 18px;
@@ -24,7 +23,7 @@ color、font-size、font-family、text-align 这四个属性是 textview 部件�
 
 新建 helloworld.xml 文件，保存以下代码：
 
-``` xml
+```markup
 <?xml version="1.0" encoding="UTF-8" ?>
 <lcui-app>
   <resource type="text/css" src="helloworld.css"/>
@@ -36,18 +35,19 @@ color、font-size、font-family、text-align 这四个属性是 textview 部件�
 ```
 
 以下是这段 XML 代码的说明：
-- 第一行指定了 XML 的版本及文档编码方式。
-- &lt;lcui-app&gt; 标签用于表示里面的代码是针对 LCUI 应用程序的。
-- &lt;resource&gt; 标签用于指示 LCUI 需要加载的资源，type 属性表示资源的类型，src 属性表示资源文件的位置。
-- 加载 helloworld.css 资源文件，将其内容作为 CSS 文本来处理。
-- 加载 C:/Windows/Fonts/comic.ttf 资源文件，将其作为 ttf 字体文件来处理。
-- &lt;ui&gt; 标签用于容纳所有与界面相关的内容，一个 XML 文档中只能有一个 &lt;ui&gt; 标签，相当于 HTML 文档中的 &lt;body&gt; 标签。
-- &lt;widget&gt; 标签指示 LCUI 创建一个部件，type 属性表示部件类型，class 属性表示该部件拥有的样式类。&lt;widget&gt; 标签内可以嵌套文本，但文本是否有用取决于该类型的部件是否支持。
-- 创建一个 textivew 类型的部件，拥有 text-hello 样式类，并设置其文本内容为 Hello, World!。
+
+* 第一行指定了 XML 的版本及文档编码方式。
+* &lt;lcui-app&gt; 标签用于表示里面的代码是针对 LCUI 应用程序的。
+* &lt;resource&gt; 标签用于指示 LCUI 需要加载的资源，type 属性表示资源的类型，src 属性表示资源文件的位置。
+* 加载 helloworld.css 资源文件，将其内容作为 CSS 文本来处理。
+* 加载 C:/Windows/Fonts/comic.ttf 资源文件，将其作为 ttf 字体文件来处理。
+* &lt;ui&gt; 标签用于容纳所有与界面相关的内容，一个 XML 文档中只能有一个 &lt;ui&gt; 标签，相当于 HTML 文档中的 &lt;body&gt; 标签。
+* &lt;widget&gt; 标签指示 LCUI 创建一个部件，type 属性表示部件类型，class 属性表示该部件拥有的样式类。&lt;widget&gt; 标签内可以嵌套文本，但文本是否有用取决于该类型的部件是否支持。
+* 创建一个 textivew 类型的部件，拥有 text-hello 样式类，并设置其文本内容为 Hello, World!。
 
 接下来是主程序的实现代码：
 
-``` c
+```c
 #include <LCUI_Build.h>
 #include <LCUI/LCUI.h>
 #include <LCUI/gui/widget.h>
@@ -73,4 +73,5 @@ int main( int argc, char **argv )
 
 以下是程序的运行效果：
 
-![运行效果](../../images//getting_started_step_3.png)
+![&#x8FD0;&#x884C;&#x6548;&#x679C;](../../.gitbook/assets/getting_started_step_3.png)
+

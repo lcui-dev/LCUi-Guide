@@ -1,8 +1,8 @@
-## 渲染一个字
+# 渲染一个字
 
 以下程序的功能是渲染一个红色的“字”并将它保存至 PNG 文件中，使用的字体为宋体。
 
-``` c
+```c
 #include <LCUI_Build.h>
 #include <LCUI/LCUI.h>
 #include <LCUI/graph.h>
@@ -51,8 +51,9 @@ int main( void )
 }
 ```
 
-编译运行后，可以在程序所在工作目录下找到 test_char_render.png 文件，打开它可看到如下图所示的内容：
+编译运行后，可以在程序所在工作目录下找到 test\_char\_render.png 文件，打开它可看到如下图所示的内容：
 
-![绘制出来的文字](../../images/test_char_render.png)
+![&#x7ED8;&#x5236;&#x51FA;&#x6765;&#x7684;&#x6587;&#x5B57;](../../.gitbook/assets/test_char_render.png)
 
 在绘制文字时都需要指定字体的 ID，这个 ID 标识了字体的字族和风格，如果要使用默认的字体，可以使用 -1 作为 ID。字体位图数据是 `LCUI_FontBitmap` 类型，可以用 `FontBitmap_Mix()` 函数将该字体位图绘制到指定的图像上，该函数支持自定义字体颜色。
+
