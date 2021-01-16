@@ -1,7 +1,7 @@
 # Table of contents
 
 * [开始](README.md)
-* [快速上手](kuai-su-shang-shou/README.md)
+* [基础](kuai-su-shang-shou/README.md)
   * [安装](kuai-su-shang-shou/an-zhuang.md)
   * [介绍](kuai-su-shang-shou/jie-shao.md)
   * [命名约定](kuai-su-shang-shou/ming-ming-yue-ding.md)
