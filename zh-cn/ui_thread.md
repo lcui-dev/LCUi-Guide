@@ -8,12 +8,11 @@ LCUI 的主循环包含了图形界面的更新和重绘操作，主循环所在
 
 在 LCUI 中，图形界面的事件响应是在 UI 线程上处理的，你可以在事件处理函数中直接操作界面资源，为了避免产生界面卡顿的问题，建议将所有耗时比较长的操作放在其它线程上进行。比如让应用程序在按钮被点击后从文件中载入图像数据，如果直接在事件响应函数里完成这个任务，那么界面会一直处于假死状态直到图像被载入完为止，通常的做法是新建一个线程作为工作线程，然后为它分配一个任务队列，等需要执行耗时任务时就向该队列添加相关数据并通知工作线程执行任务。
 
-
 **在其它线程中操作界面**
 
 上面讲到的是在 UI 线程里执行其它任务的问题，在其它线程执行完任务后会需要将任务执行结果反馈到图形界面上，这时可以用 `LCUI_PostTask()` 函数将界面相关的操作放到 UI 线程上执行，示例代码如下：
 
-``` c
+```c
 void TaskForUpdateUI( void *arg1, void *arg2 )
 {
         char *text = arg2;
@@ -48,22 +47,23 @@ void TaskForUpdateUI( void *arg1, void *arg2 )
 
 **例外情况**
 
-通常涉及到数据删除和全局影响范围较大的操作都必须在 UI 线程中执行，例如: 
+通常涉及到数据删除和全局影响范围较大的操作都必须在 UI 线程中执行，例如:
 
-- `Widget_Destroy()`
-- `Widget_RemoveClass()`
-- `Widget_RemoveStatus()`
-- `Widget_Unwrap()`
-- `LCUI_LoadCSSFile()`
-- `LCUIFont_LoadFile()`
+* `Widget_Destroy()`
+* `Widget_RemoveClass()`
+* `Widget_RemoveStatus()`
+* `Widget_Unwrap()`
+* `LCUI_LoadCSSFile()`
+* `LCUIFont_LoadFile()`
 
 对于只涉及简单的数据修改的操作可以直接在其它线程中执行，例如：
 
-- `Widget_Move()`
-- `Widget_SetPadding()`
-- `Widget_SetMargin()`
-- `Widget_SetDisabled()`
-- `Widget_Resize()`
-- `Widget_Show()`
-- `Widget_Hide()`
-- `Widget_Update()`
+* `Widget_Move()`
+* `Widget_SetPadding()`
+* `Widget_SetMargin()`
+* `Widget_SetDisabled()`
+* `Widget_Resize()`
+* `Widget_Show()`
+* `Widget_Hide()`
+* `Widget_Update()`
+

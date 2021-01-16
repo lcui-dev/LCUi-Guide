@@ -1,8 +1,8 @@
-## 触控事件
+# 触控事件
 
 LCUI 支持触控事件，但目前仅在 Windows 系统中有效，以下是触控事件的数据结构定义：
 
-``` c
+```c
 typedef struct LCUI_TouchPointRec_ {
         int x;
         int y;
@@ -21,11 +21,11 @@ typedef LCUI_TouchEvent LCUI_WidgetTouchEvent;
 
 触控事件的数据结构设计参考自 Windows API，只保留了主要的成员变量。LCUI 内部的触控事件和部件级的触控事件是一样的数据结构。
 
-从上述代码中可以比较容易的理解到：触控事件包含多个触点的信息，n_points 表示当前共有多少个触点，每个触点都有自己的 x、y 坐标，并且有个 id 用于标识该触点，而 state 表示该触点的状态，它的值有三种：WET_TOUCHDOWN、WET_TOUCHUP、WET_TOUCHMOVE，这些值分别对应：触点按下、触点释放、触点移动这三个状态。
+从上述代码中可以比较容易的理解到：触控事件包含多个触点的信息，n\_points 表示当前共有多少个触点，每个触点都有自己的 x、y 坐标，并且有个 id 用于标识该触点，而 state 表示该触点的状态，它的值有三种：WET\_TOUCHDOWN、WET\_TOUCHUP、WET\_TOUCHMOVE，这些值分别对应：触点按下、触点释放、触点移动这三个状态。
 
 以下是测试触控事件的程序：
 
-``` c
+```c
 /** testtouch.c -- test touch support */
 
 #include <stdio.h>
@@ -125,6 +125,7 @@ int main( int argc, char **argv )
 
 编译后运行，如果你的计算机自带触屏，可以用手指在程序窗口内点击、移动，会看到类似于如下图所示的效果：
 
-![运行效果](../../images/gui_events_touch.gif)
+![&#x8FD0;&#x884C;&#x6548;&#x679C;](../../.gitbook/assets/gui_events_touch.gif)
 
 这个程序实现的功能是捕获各个触点并用对应的红色方块表示触点的位置，有个 `touch_bindings` 全局变量用于保存各个触点和部件的绑定记录，在响应触控事件时会遍历每个触点，根据触点的 id 在绑定记录中找对应的部件，找到后会根据触点的坐标来更新部件的坐标。为了让部件能够捕获触点在它外面产生的触控事件，并且不被其它部件捕获到，调用了 `Widget_SetTouchCapture()` 函数实现对该触点的独占，在触点释放后，调用 `Widget_ReleaseTouchCapture()` 函数解除对触点的独占。
+

@@ -1,13 +1,10 @@
-## 继承
+# 继承
 
-有时候会发现某个部件的功能不够用，想扩展一些新功能，但不想直接修改它的代码，也
-不想重写一个新部件，这个时候可以使用原型的“继承”功能来创建一个该部件的扩展版本，
-即能保留原部件的功能，又能使用新加的功能。
+有时候会发现某个部件的功能不够用，想扩展一些新功能，但不想直接修改它的代码，也 不想重写一个新部件，这个时候可以使用原型的“继承”功能来创建一个该部件的扩展版本， 即能保留原部件的功能，又能使用新加的功能。
 
-以 textview 部件为例，现在有这样的功能需求：能够支持设置网址链接，在被点击时会调用浏览器打
-开这个链接，网址链接能靠 `href` 属性来设置，以下是示例代码：
+以 textview 部件为例，现在有这样的功能需求：能够支持设置网址链接，在被点击时会调用浏览器打 开这个链接，网址链接能靠 `href` 属性来设置，以下是示例代码：
 
-``` c
+```c
 #include <string.h>
 #include <stdlib.h>
 #include <LCUI_Build.h>
@@ -78,12 +75,11 @@ void LCUIWidget_AddLink( void )
         prototype->destroy = Link_OnDestroy;
         prototype->setattr = Link_OnSetAttr;
 }
-
 ```
 
 以上代码创建了一个名为 link 的部件原型，接下来将展示如何使用它：
 
-``` c
+```c
 // ...
 LCUI_Widget link;
 LCUIWidget_AddLink();
@@ -93,7 +89,7 @@ Link_SetHref( link, "https://www.example.com" );
 // ...
 ```
 
-``` xml
+```markup
 <?xml version="1.0" encoding="UTF-8" ?>
 <lcui-app>
   <ui>
@@ -101,3 +97,4 @@ Link_SetHref( link, "https://www.example.com" );
   </ui>
 </lcui-app>
 ```
+
