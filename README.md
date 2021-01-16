@@ -1,8 +1,17 @@
-# LCUI 编程指南
+---
+description: 这是一个 LCUI 文档及相关资源的概览页面。
+---
 
-本书讲述了 LCUI 相关概念和知识，以及基本用法。
+# 开始
 
-在线阅读：[https://lcui.lc-soft.io/guide/](https://lcui.lc-soft.io/guide/)
+（文档待完善）
 
-本书采用 Markdown 标记语言编写、由 GitBook 工具生成，GitBook 工具的安装及使用方法请参考 [GitBook 的官方文档](https://github.com/GitbookIO/gitbook/blob/master/docs/setup.md)。
+### 参考
+
+此文档的目录和内容组织方式参考了这些文档：
+
+* [Vue.js 文档](https://cn.vuejs.org/v2/guide/index.html)
+* [React 文档](https://react.docschina.org/docs/getting-started.html)
+
+
 
