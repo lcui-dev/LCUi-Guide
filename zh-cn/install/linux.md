@@ -6,39 +6,52 @@
 
 如果你的系统是 Ubuntu，可运行以下命令来安装依赖：
 
-    apt-get install libpng-dev libjpeg-dev libxml2-dev libfreetype6-dev libx11-dev
+```text
+apt-get install libpng-dev libjpeg-dev libxml2-dev libfreetype6-dev libx11-dev
+```
 
 ## 安装 LCUI
 
 在最简单的情况下，你可以运行以下命令行：
 
-    git clone https://github.com/lc-soft/LCUI.git
-    cd LCUI
-    ./autogen.sh
-    ./configure
+```text
+git clone https://github.com/lc-soft/LCUI.git
+cd LCUI
+./autogen.sh
+./configure
+```
 
 在 configure 脚本执行完后，运行以下命令编译源代码并安装 LCUI 的函数库和头文件：
 
-    make
-    make install
+```text
+make
+make install
+```
 
 如果需要运行示例程序，可运行命令来编译生成示例程序：
 
-    cd test
-    make
+```text
+cd test
+make
+```
 
 ## 配置
 
 为编译器添加参数，指定 LCUI 的头文件和库文件的查找位置，例如：
 
-    gcc -c test.c `pkg-config --cflags lcui`
-    gcc –o test.o test `pkg-config --libs lcui`
+```text
+gcc -c test.c `pkg-config --cflags lcui`
+gcc –o test.o test `pkg-config --libs lcui`
+```
 
 通常情况下，你也可以直接用以下方法：
 
-    gcc -c test.c
-    gcc –o test.o test -lLCUI
+```text
+gcc -c test.c
+gcc –o test.o test -lLCUI
+```
 
 ## 完成
 
-至此，你已经完成了 LCUI 开发环境的搭建，接下来你可以开始尝试[编写 Hello World](../getting_started/step1.html)。
+至此，你已经完成了 LCUI 开发环境的搭建，接下来你可以开始尝试[编写 Hello World](https://github.com/lc-ui/lcui-guide/tree/ee3696d3ef53c0761c2fac4155b137e7ed4d00e1/zh-cn/getting_started/step1.html)。
+

@@ -1,16 +1,16 @@
-## 渲染一段文字
+# 渲染一段文字
 
 绘制一个文字比较容易，但用绘制一个文字的方法去绘制一段文字的话，实现起来会很复杂，针对这个问题，可以用 LCUI 提供的文本图层（TextLayer）来解决，除了基本的文本绘制功能外，还具备一下功能：
 
-- 自定义全局文字的对齐方式
-- 用标签设定其中一段文字的颜色和大小
-- 文本的插入、删除功能，以及光标定位
+* 自定义全局文字的对齐方式
+* 用标签设定其中一段文字的颜色和大小
+* 文本的插入、删除功能，以及光标定位
 
 LCUI 的文本显示（TextView）部件和文本编辑框（TextEdit）部件就是基于该模块实现的。
 
 以下是简单的示例程序：
 
-``` c
+```c
 #include <LCUI_Build.h>
 #include <LCUI/LCUI.h>
 #include <LCUI/graph.h>
@@ -56,10 +56,11 @@ int main( void )
 }
 ```
 
-编译运行后，可以在程序所在工作目录下找到 test_string_render.png 文件，打开它可看到如下图所示的内容：
+编译运行后，可以在程序所在工作目录下找到 test\_string\_render.png 文件，打开它可看到如下图所示的内容：
 
-![绘制出来的文字](../../images/test_string_render.png)
+![&#x7ED8;&#x5236;&#x51FA;&#x6765;&#x7684;&#x6587;&#x5B57;](../../.gitbook/assets/test_string_render.png)
 
 在为 TextLayer 设置文本、修改文字样式后，需要调用 `TextLayer_Update()` 函数以应用这些更改，该函数的第二个参数是个链表，用于保存文本图层中需要刷新的区域，如果不需要这些数据可以将该参数设置为 NULL。
 
 TextLayer 提供了 `TextLayer_DrawToGraph()` 函数用于将文本图层绘制到图像中，第二个参数指定 TextLayer 中需要绘制的区域，第三个参数指定绘制出的内容在图像中的位置。
+

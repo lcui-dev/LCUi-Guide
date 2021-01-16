@@ -1,4 +1,4 @@
-## 渲染
+# 渲染
 
 本章节将介绍 `Widget_Render()` 函数的基本用法，`Widget_Render()` 函数的主要功能是渲染部件内容，LCUI 输出的图形界面都是由该函数渲染出来的。
 
@@ -6,7 +6,7 @@
 
 以下是示例程序：
 
-``` c
+```c
 #include <LCUI_Build.h>
 #include <LCUI/LCUI.h>
 #include <LCUI/graph.h>
@@ -66,10 +66,11 @@ int main( void )
 }
 ```
 
-编译运行后，可以在程序所在工作目录下找到 test_widget_render.png 文件，打开它可看到如下图所示的内容：
+编译运行后，可以在程序所在工作目录下找到 test\_widget\_render.png 文件，打开它可看到如下图所示的内容：
 
-![绘制出来的部件](../../images/test_widget_render.png)
+![&#x7ED8;&#x5236;&#x51FA;&#x6765;&#x7684;&#x90E8;&#x4EF6;](../../.gitbook/assets/test_widget_render.png)
 
 在 LCUI 中，一级部件的尺寸是与屏幕对应的，而本实例中 root 部件仅仅充当容器，因为它并没有与屏幕绑定，在调用 `Widget_Update()` 后尺寸会为 0 x 0，所以实际渲染的对象是 box。
 
 `Widget_Update()` 需要按照从父到子的顺序调用，因为子级部件的坐标、宽度等属性的计算依赖父级部件。
+

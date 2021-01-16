@@ -10,20 +10,20 @@
 
 ### libpng
 
-- 项目主页：http://www.libpng.org/pub/png/libpng.html
-- 工程文件：projects/vstudio/vstudio.sln
-- 头文件：png.h、pngconfig.h、pnglibconf.h
+* 项目主页：[http://www.libpng.org/pub/png/libpng.html](http://www.libpng.org/pub/png/libpng.html)
+* 工程文件：projects/vstudio/vstudio.sln
+* 头文件：png.h、pngconfig.h、pnglibconf.h
 
 ### freetype
 
-- 项目主页：https://www.freetype.org/
-- 工程文件：builds/windows/vc2010/freetype.sln
-- 头文件：include/ft2build.h、include/freetype
+* 项目主页：[https://www.freetype.org/](https://www.freetype.org/)
+* 工程文件：builds/windows/vc2010/freetype.sln
+* 头文件：include/ft2build.h、include/freetype
 
 ### jpeg
 
-- 项目主页：http://www.ijg.org/
-- 头文件：jconfig.h、jmorecfg.h、jerror.h、jpeglib.h
+* 项目主页：[http://www.ijg.org/](http://www.ijg.org/)
+* 头文件：jconfig.h、jmorecfg.h、jerror.h、jpeglib.h
 
 jpeg 库没有提供现成的 sln 工程文件，你需要按照以下步骤手动生成它。
 
@@ -38,17 +38,19 @@ jpeg 库没有提供现成的 sln 工程文件，你需要按照以下步骤手�
 
 ### libxml2
 
-- 项目主页：http://xmlsoft.org/
-- 工程文件：win32/VC10/libxml2.sln
-- 头文件：include/libxml
+* 项目主页：[http://xmlsoft.org/](http://xmlsoft.org/)
+* 工程文件：win32/VC10/libxml2.sln
+* 头文件：include/libxml
 
 如果你想对 libxml2 进行裁剪，你可以在源码目录里的 win32 目录中运行以下命令：
 
-    cscript configure.js 
+```text
+cscript configure.js 
+```
 
 可以看到如下输出：
 
-``` text
+```text
 Microsoft (R) Windows Script Host Version 5.812
 版权所有(C) Microsoft Corporation。保留所有权利。
 
@@ -111,11 +113,15 @@ Put shared libs in: $(PREFIX)\bin
 
 其中 FTP 客户端、HTTP 客户端、HTML 处理器等模块是用不到的，可以使用以下命令禁用掉它们：
 
-    cscript configure.js ftp=no http=no html=no legacy=no iconv=no catalog=no docb=no modules=no
+```text
+cscript configure.js ftp=no http=no html=no legacy=no iconv=no catalog=no docb=no modules=no
+```
 
 之后开始编译：
 
-    nmake /f Makefile.msvc
+```text
+nmake /f Makefile.msvc
+```
 
 文件会输出到 `bin.msvc` 目录下，这些编译方法在 Readme.txt 文件中有说明。
 
@@ -123,11 +129,12 @@ Put shared libs in: $(PREFIX)\bin
 
 LCUI 主要是在 Windows 系统环境下开发的，你可以使用 [VisualStudio](https://www.visualstudio.com) 打开 `build/windows/LCUI.sln` 文件，在编译前，你需要将依赖项的库文件和头文件放在源码目录中的 vendor 目录中，目录结构如下：
 
-    vendor/include
-    vendor/lib
+```text
+vendor/include
+vendor/lib
+```
 
-之后，在 VisualStudio 的菜单中选择 `生成 -> 生成解决方案` 来编译生成 LCUI。如果你用的是其它 IDE，请尝
-试按该 IDE 的方式创建项目并将源文件添加至项目内，然后配置好依赖项再编译。
+之后，在 VisualStudio 的菜单中选择 `生成 -> 生成解决方案` 来编译生成 LCUI。如果你用的是其它 IDE，请尝 试按该 IDE 的方式创建项目并将源文件添加至项目内，然后配置好依赖项再编译。
 
 ## 安装 LCUI
 
@@ -137,48 +144,53 @@ LCUI 主要是在 Windows 系统环境下开发的，你可以使用 [VisualStud
 
 每次新建 LCUI 应用项目时，你都需要手动为项目修改如下配置。看上去很麻烦，如果你感兴趣可以参考[这篇文章](https://msdn.microsoft.com/zh-cn/library/6db0hwky.aspx)为 VisualStudio 添加 LCUI 应用程序模板。
 
-- **C/C++ > 常规 > 附加包含目录**
+* **C/C++ &gt; 常规 &gt; 附加包含目录**
 
-    将该项设置为：`$(SolutionDir)vendor\include`，如果你的 VisualStudio 工程文件不是建立在源码根目录下，例如：`/build/windows/project.sln`，那么请手动调整该配置项。
+  将该项设置为：`$(SolutionDir)vendor\include`，如果你的 VisualStudio 工程文件不是建立在源码根目录下，例如：`/build/windows/project.sln`，那么请手动调整该配置项。
 
-- **链接器 > 常规 > 附加库目录**
+* **链接器 &gt; 常规 &gt; 附加库目录**
 
-    将该项设置为：`$(OutDir)`，即：将 exe 输出目录作为附加库目录。
+  将该项设置为：`$(OutDir)`，即：将 exe 输出目录作为附加库目录。
 
-- **输入 > 附加依赖项**
+* **输入 &gt; 附加依赖项**
 
-    将该项设置为：`LCUI.lib; LCUIMain.lib`
+  将该项设置为：`LCUI.lib; LCUIMain.lib`
 
-- **生成事件 > 预先生成事件**
+* **生成事件 &gt; 预先生成事件**
 
-    将该项设置为：
+  将该项设置为：
 
-        copy $(SolutionDir)vendor\lib\LCUI*.lib $(OutDir)
-        copy $(SolutionDir)vendor\lib\LCUI*.dll $(OutDir)
+  ```text
+    copy $(SolutionDir)vendor\lib\LCUI*.lib $(OutDir)
+    copy $(SolutionDir)vendor\lib\LCUI*.dll $(OutDir)
+  ```
 
-    在编译、调试或运行应用时，需要让 lib、dll 文件和 exe 在一个目录，方便链接器能够找到它们。
+  在编译、调试或运行应用时，需要让 lib、dll 文件和 exe 在一个目录，方便链接器能够找到它们。
 
 ### Windows 通用应用
 
 如果你的应用是 Windows 通用应用，那么你需要在以上配置的基础上再做如下修改。
 
-- **输入 > 附加依赖项**
+* **输入 &gt; 附加依赖项**
 
-    将该项设置为：`LCUI.lib; LCUIApp.lib`
+  将该项设置为：`LCUI.lib; LCUIApp.lib`
 
-- **生成事件 > 预先生成事件**
+* **生成事件 &gt; 预先生成事件**
 
-    将该项设置为：
+  将该项设置为：
 
-        copy $(SolutionDir)vendor\lib\uwp\LCUI*.lib $(OutDir)
-        copy $(SolutionDir)vendor\lib\uwp\LCUI*.dll $(OutDir)
+  ```text
+    copy $(SolutionDir)vendor\lib\uwp\LCUI*.lib $(OutDir)
+    copy $(SolutionDir)vendor\lib\uwp\LCUI*.dll $(OutDir)
+  ```
 
-    LCUI 的 Windows 通用应用版的库文件存放在 uwp 目录里。
+  LCUI 的 Windows 通用应用版的库文件存放在 uwp 目录里。
 
-- **文件**
+* **文件**
 
-    右键单击项目名称，然后选择 `添加 > 现有项...`，在文件选择器中选择 LCUI.dll 和 LCUIApp.dll 文件。添加后，右键点击这些文件并选择 `属性`，将 `常规 > 内容` 设置为 `是`。
+  右键单击项目名称，然后选择 `添加 > 现有项...`，在文件选择器中选择 LCUI.dll 和 LCUIApp.dll 文件。添加后，右键点击这些文件并选择 `属性`，将 `常规 > 内容` 设置为 `是`。
 
 ## 完成
 
-至此，你已经知道了 LCUI 的安装和编译方法，以及 LCUI 应用程序项目的配置方法，接下来你可以开始尝试[编写 Hello World](../getting_started/step1.html)。
+至此，你已经知道了 LCUI 的安装和编译方法，以及 LCUI 应用程序项目的配置方法，接下来你可以开始尝试[编写 Hello World](https://github.com/lc-ui/lcui-guide/tree/ee3696d3ef53c0761c2fac4155b137e7ed4d00e1/zh-cn/getting_started/step1.html)。
+
