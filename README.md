@@ -28,7 +28,7 @@ description: 这是一个 LCUI 文档及相关资源的概览页面。
 
 请到 GitHub 上的仓库中创建 [Pull Requests](https://github.com/lc-ui/lcui-guide/pulls) 来为 LCUI 文档做出贡献。 [贡献者指南](https://github.com/lc-soft/LCUI/blob/master/CONTRIBUTING.md)将会帮助你更好的为社区做贡献。
 
-此文档中的部分章节会列出一些待办任务，如果你有兴趣，欢迎向 LCUI 提交你的想法和代码。
+此文档中的部分章节会列出一些待办事项，如果你有兴趣，欢迎向 LCUI 提交你的想法和代码。
 
 我们的社区提倡相互尊重、相互支持。 参阅[社区行为规范](https://github.com/lc-soft/LCUI/blob/master/CODE_OF_CONDUCT.md)。
 
