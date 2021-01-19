@@ -53,7 +53,7 @@ int main(void)
 }
 ```
 
-TextView 是预置的组件，它提供了文本渲染功能，我们可以使用它将 `Hello, World!` 文本渲染到屏幕上。在使用 TextView 组件之前，我们需要调用 `LCUIWidget_New()` 函数创建来创建一个组件实例，其中 `"textview"` 参数是 TextView 在组件原型库中注册的名字， `LCUIWidget_New()` 函数根据这个名字找到对应的组件原型后，会调用原型中的 `init` 函数对组件实例进行初始化，这个过程类似于 C++ 中的 `new Class()`。
+TextView 是预置的组件，它提供了文本渲染功能，我们可以使用它将 `Hello, World!` 文本渲染到屏幕上。在使用 TextView 组件之前，我们需要调用 `LCUIWidget_New()` 函数来创建一个组件实例，其中 `"textview"` 参数是 TextView 在组件原型库中注册的名字， `LCUIWidget_New()` 函数根据这个名字找到对应的组件原型后，会调用原型中的 `init` 函数对组件实例进行初始化，这个过程类似于 C++ 中的 `new Class()`。
 
 在 LCUI 底层实现中，所有类型的组件都共用同一个数据结构，这意味着我们只需要用 `LCUI_Widget` 这一种类型的指针来引用组件，从 `LCUIWdget_New()` 函数拿到组件实例后，我们调用了一些函数设置它的文本内容并将它追加到根组件内，其中 `Widget_` 前缀的函数是所有组件通用的函数，可以用于操作组件的基本属性、样式、布局等，而 `TextView_` 前缀的函数则是 TextView 组件专用的函数。
 
