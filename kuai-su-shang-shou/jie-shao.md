@@ -95,7 +95,7 @@ int main(void)
 
 这里我们用到了预置的 Button 组件，它提供了简单的交互反馈效果，用于告知用户点击它可以触发相应的操作。
 
-`在 Widget_BindEvent()` 函数调用代码中，我们指定了事件名称 `"click"` 、事件处理器 `OnButtonClick` 以及传给它的 `text` 组件指针。当用户点击按钮时会触发 click 事件，然后调用与之绑定的 `OnButtonClick()` 函数，该函数从事件数据结构体中的 data 成员拿到绑定时指定的 text 组件，然后将文本内容更改为`"Hello, LCUI!"` 。
+在 `Widget_BindEvent()` 函数调用代码中，我们指定了事件名称 `"click"` 、事件处理器 `OnButtonClick` 以及传给它的 `text` 组件指针。当用户点击按钮时会触发 click 事件，然后调用与之绑定的 `OnButtonClick()` 函数，该函数从事件数据结构体中的 data 成员拿到绑定时指定的 text 组件，然后将文本内容更改为`"Hello, LCUI!"` 。
 
 LCUI 还提供了 TextEdit 组件，它能响应并存储用户输入的文本内容：
 
@@ -277,9 +277,11 @@ int main(void)
  使用 XML 和 CSS 来描述界面以达到结构、表现和行为相分离的目的，这种做法和使用 HTML + CSS + JavaScript 开发网页一样，是数十年前就有的开发方式，算不上有多先进，LCUI 的存在目的如果只是为了模仿浏览器的话那也没什么意义，目前在新的用户界面的探索和实践成果中，能值得一提的是实验性的编程语言 ——Trad，在介绍它之前，我们或多或少也能意识到现在使用 C 语言开发用户界面的一些问题：
 
 * 实现异步操作时，要写一些复杂的代码解决传参和同步问题
+* 项目的源码文件多了后，需要花时间维护 Makefile 和构建脚本
+* 用 C 语言以面向对象方式编程的体验较差
 * （略）
 
-Trad 语言诞生诞辰的目的就是为了解决这些问题，首先我们看看上面的示例应用是如何以 Trad 语言表达的： 
+Trad 语言诞生的目的就是为了解决这些问题，首先我们看看上面的示例应用是如何以 Trad 语言表达的： 
 
 ```jsx
 import {
@@ -347,6 +349,8 @@ tradc main.jsx
 gcc -o main main.jsx.c -lLCUI
 ```
 
+在 Trad 的代码库的 [example](https://github.com/lc-soft/trad/tree/master/example) 目录中还有另一个示例可供体验。
+
 ### 待办事项
 
 #### 取一个新名字
@@ -360,6 +364,16 @@ LCUI 的 xml 文件解析功能是由 libxml 库提供支持的，为了缩减 L
 #### 为 LCUI CLI 添加 CSS 编译器
 
 集成 SASS 预处理器，支持对多个 scss 或 css 文件进行处理、合并和编译，编译只是简单的将处理后的结果转换成 C 中的字符串代码。
+
+**重写 Trad 的编译器**
+
+ Trad 的编译器的语法树和生成器的实现代码是混在一起的，代码中大量使用了 class 继承特性，导致功能模块间的耦合度较高，添加新语法解析支持的难度较大。为了解决这些问题，可以参考 [babel](https://github.com/babel/babel/tree/master/packages) 编译器的做法，将代码划分为语法树（AST）、解析器（Parser）、生成器（Generator）。 对于语法树的代码划分，可以参考 [babel-types](https://github.com/babel/babel/tree/master/packages/babel-types) 和 [babel-traverse](https://github.com/babel/babel/tree/master/packages/babel-traverse)，前者用于语法树结点的工具库，后者用于维护整棵树的状态，包括替换、移除和添加结点。
+
+ **制定 Trad 的语言规范文档**
+
+文档的内容组织方式可参考 [TypeScript 的语言规范文档](https://github.com/microsoft/TypeScript/blob/master/doc/spec-ARCHIVED.md)。
+
+
 
 
 

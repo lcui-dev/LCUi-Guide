@@ -4,7 +4,7 @@
 * [基础](kuai-su-shang-shou/README.md)
   * [安装](kuai-su-shang-shou/an-zhuang.md)
   * [介绍](kuai-su-shang-shou/jie-shao.md)
-  * [命名约定](kuai-su-shang-shou/ming-ming-yue-ding.md)
+  * [约定](kuai-su-shang-shou/ming-ming-yue-ding.md)
   * [XML 语法](kuai-su-shang-shou/xml-yu-fa.md)
   * [CSS 语法](kuai-su-shang-shou/css-yu-fa.md)
   * [组件基础](kuai-su-shang-shou/zu-jian-ji-chu.md)

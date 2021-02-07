@@ -31,26 +31,6 @@ lcpkg install github.com/lc-soft/LCUI
 
 LCUI 提供了一个[官方的 CLI](https://github.com/lc-ui/lcui-cli)，为 LCUI 应用快速搭建繁杂的脚手架。更多详情可查阅 [LCUI CLI 的文档](https://github.com/lc-ui/lcui-cli)。
 
-```text
-# 安装命令行工具
-npm install -g @lcui/cli
-
-# 创建项目
-lcui create my-lcui-app
-
-# 进入项目目录
-cd my-lcui-app
-
-# 准备开发环境
-lcui bootstrap
-
-# 构建项目
-lcui build
-
-# 运行
-lcui run
-```
-
 {% hint style="warning" %}
 CLI 工具假定用户对 Node.js 和相关构建工具有一定程度的了解。如果你是新手，我们强烈建议先在不用构建工具的情况下通读指南，在熟悉 LCUI 本身之后再使用 CLI。
 {% endhint %}
