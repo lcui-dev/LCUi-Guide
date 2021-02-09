@@ -22,7 +22,7 @@ LCUI 在其所有项目中公布的功能和行为都遵循[语义化版本控�
 
 LCPkg 是一个用于管理 C/C++ 项目依赖的命令行工具，目前仅适合在 Windows 系统上使用，使用它你可以很方便的下载 LCUI 的二进制文件包。
 
-```bash
+```text
 # 最新稳定版
 lcpkg install github.com/lc-soft/LCUI
 ```
@@ -30,26 +30,6 @@ lcpkg install github.com/lc-soft/LCUI
 ### 命令行工具 \(CLI\)
 
 LCUI 提供了一个[官方的 CLI](https://github.com/lc-ui/lcui-cli)，为 LCUI 应用快速搭建繁杂的脚手架。更多详情可查阅 [LCUI CLI 的文档](https://github.com/lc-ui/lcui-cli)。
-
-```bash
-# 安装命令行工具
-npm install -g @lcui/cli
-
-# 创建项目
-lcui create my-lcui-app
-
-# 进入项目目录
-cd my-lcui-app
-
-# 准备开发环境
-lcui bootstrap
-
-# 构建项目
-lcui build
-
-# 运行
-lcui run
-```
 
 {% hint style="warning" %}
 CLI 工具假定用户对 Node.js 和相关构建工具有一定程度的了解。如果你是新手，我们强烈建议先在不用构建工具的情况下通读指南，在熟悉 LCUI 本身之后再使用 CLI。
