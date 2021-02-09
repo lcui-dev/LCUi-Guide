@@ -7,7 +7,6 @@
   * [约定](kuai-su-shang-shou/ming-ming-yue-ding.md)
   * [XML](kuai-su-shang-shou/xml-yu-fa.md)
   * [CSS](kuai-su-shang-shou/css-yu-fa.md)
-  * [组件基础](kuai-su-shang-shou/zu-jian-ji-chu.md)
 * [实例](shi-li/README.md)
   * [主循环](shi-li/zhu-xun-huan.md)
   * [工作线程](shi-li/gong-zuo-xian-cheng.md)
