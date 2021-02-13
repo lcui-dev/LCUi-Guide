@@ -12,12 +12,6 @@ description: 这是一个 LCUI 文档及相关资源的概览页面。
 
  本文档假设你已经熟悉了  C 语言的中级知识，具备解决开发环境配置和常见编译问题的能力，且了解过包括  [HTML](https://developer.mozilla.org/docs/Learn/HTML/Introduction_to_HTML)，[CSS](https://developer.mozilla.org/docs/Learn/CSS/First_steps) 和 [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript) 在内的 Web 开发技术。如果你刚开始学习 C 开发，将函数库作为你的第一步可能不是最好的主意——掌握好基础知识再来吧！之前有其它库的使用经验会有帮助，但这不是必需的。
 
-### 术语和约定
-
-本文档中使用下列术语和约定：
-
-* 为方便书写和阅读，本文采用 User Interface 的缩写 "UI" 代替 ”界面“、”用户界面“和"图形用户界面"。
-
 ### 参考
 
 此文档的目录和内容组织方式参考了这些文档：
