@@ -12,9 +12,7 @@ description: 组件允许你将 UI 拆分为独立可复用的代码片段，并
 
 功能与 HTML 中的 img 元素相同，组件宽高自适应图片尺寸。
 
-**改进组件增量更新机制**
 
-为了应对数十万量级的组件更新，保证界面的流畅度，现有的做法是统计组件的更新耗时然后为每帧更新的组件总量设置一个合适的限制，这种做法并不是最优的，可参考 React 的 [Fiber reconciler](https://zh-hans.reactjs.org/docs/codebase-overview.html#fiber-reconciler) 的架构，重新设计 LCUI 的组件增量更新机制。
 
 \*\*\*\*
 
