@@ -12,6 +12,21 @@ description: 介绍 LCUI 的命名风格和推荐的 LCUI 应用项目的代码�
 
 大部分公共的数据类型都采用驼峰式命名法（Camel-Case），并带有 `LCUI_` 前缀，像链表（LinkedList）、红黑树（RBTree） 和字典（Dict）这类基础数据类型，由于名称长度和可替代性，未加上 `LCUI_` 前缀。
 
+对于常以指针形态引用的数据类型，它的定义会是这样：
+
+```c
+typedef struct LCUI_FooRec_*  LCUI_Foo;
+
+typedef struct  LCUI_FooRec_
+{
+  /* fields for the 'foo' class */
+  ...
+
+} LCUI_FooRec;
+```
+
+这种写法参考自 FreeType，如需了解更多，可参考它的设计文档：《[FreeType Design](https://www.freetype.org/freetype2/docs/design/design-3.html#section-1)》
+
 #### 函数
 
 由于 LCUI 在开发初期并未确定最佳的命名风格，受到维护人员的不稳定的编程习惯以及其它开源项目的影响，每当引入新功能的代码时候都有可能采用其它其它命名风格，因此，你会发现现在的 LCUI 源码中存在多种命名风格：
