@@ -11,6 +11,7 @@
   * [主循环](app/mainloop.md)
   * [工作线程](app/worker.md)
   * [定时器](app/timer.md)
+  * [事件](app/events.md)
 * [组件](widget/README.md)
   * [属性](widget/attributes.md)
   * [样式](widget/style.md)
