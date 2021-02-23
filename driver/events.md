@@ -6,6 +6,8 @@ description: 事件循环的概念和驱动开发方式的介绍。
 
 事件是应用程序与自身各个功能模块以及与操作系统进行通讯的手段，也是实现事件驱动编程模型的基础，应用程序如果要响应这些事件，通常是创建一个事件队列来集中存放它们，从事件队列取出事件并调用对应处理器就是一次事件响应，而往复执行这个操作的过程就是事件循环。
 
+### 驱动接口
+
 LCUI 对事件循环的操作有处理事件、绑定事件和解绑事件，驱动模块的职责就是基于操作系统接口向 LCUI 提供实现了这些操作的接口。首先我们看看 [include/LCUI/main.h](https://github.com/lc-soft/LCUI/blob/345031d74ca65225ec3623e0c92d448f54f5052b/include/LCUI/main.h#L133-L142) 中的 `LCUI_AppDirver` 定义：
 
 ```c
@@ -35,7 +37,9 @@ typedef struct LCUI_AppDriverRec_ {
 
 剩下的 `GetData` 函数主要用于向其它驱动模块提供数据，例如在 Windows 系统中，虽然各个驱动的代码因出于模块化的考虑而被分割到多个源文件中，但它们都是基于同一个主窗口的消息循环，都依赖主窗口句柄，为了让这些驱动能拿到主窗口句柄，那么就可以靠 `GetData` 函数来获取。
 
-综上所述，假设你添加的是适用于 Mac OS 的驱动，那么创建一个事件循环驱动需要如下步骤：
+### 开发方式
+
+综上所述，假设你添加的是适用于 Mac OS 的驱动，那么需要如下步骤：
 
 1. 在 `LCUI_AppDriverId` 中的末尾添加 `LCUI_APP_DARWIN` 。
 2. 按照函数指针的原型来定义一些事件处理函数。
@@ -47,6 +51,8 @@ typedef struct LCUI_AppDriverRec_ {
            #define LCUI_CreateAppDriver LCUI_CreateDarwinAppDriver
    ...
    ```
+
+### 参考资料
 
 如需了解更多，可参考现有的 Windows 和 Linux 系统的驱动：
 

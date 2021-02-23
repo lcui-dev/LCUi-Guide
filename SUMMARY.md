@@ -32,8 +32,8 @@
   * [字体数据库](font/library.md)
 * [驱动](driver/README.md)
   * [事件循环](driver/events.md)
-  * [键盘](driver/keyboard.md)
-  * [鼠标](driver/mouse.md)
   * [视频](driver/video.md)
+  * [鼠标](driver/mouse.md)
+  * [键盘](driver/keyboard.md)
   * [触控](driver/touchscreen.md)
 
