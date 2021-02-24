@@ -72,7 +72,7 @@ typedef struct LCUI_SysEventRec_ {
 
 ### 系统事件
 
-系统事件是指操作系统中的 GUI 系统所提供的事件，它在 Windows 系统中是消息机制中的窗口消息，而在带有 X11 视窗系统的 Linux 系统中则是 X 窗口事件。它是核心事件的来源，LCUI 的驱动模块主要工作流程就是响应系统事件，从中提取必要的数据，然后转换成核心事件。
+系统事件是指操作系统中的 GUI 系统所提供的事件，它在 Windows 系统中是消息机制中的窗口消息，而在带有 X11 系统的 Linux 系统中则是事件。它是核心事件的来源，LCUI 的驱动模块主要工作流程就是响应系统事件，从中提取必要的数据，然后转换成核心事件。
 
 系统事件的相关函数如下：
 
@@ -118,9 +118,9 @@ enum MyCustomEvent {
 
 **纠正事件的数据结构和函数的命名**
 
-LCUI 的事件结构体命名用的是 `LCUI_SysEvent` ，绑定窗口事件的函数命名是 `LCUI_BindSysEvent` ，这两处的 Sys 所指的 System 并不是同一个，前者是指 LCUI 内部系统，后者是指操作系统，应该纠正它们的命名。
+LCUI 的核心事件对象的结构体命名用的是 `LCUI_SysEvent` ，绑定窗口事件的函数命名是 `LCUI_BindSysEvent` ，这两处的 Sys 所指的 System 并不是同一个，前者是指 LCUI 内部系统，后者是指操作系统，应该纠正它们的命名。
 
 **重新设计事件接口**
 
-事件解绑方式有 `eventId + eventHandler` 和 `eventHandlerId` 这两种，LCUI 提供了 `LCUI_UnbindEvent()` 函数作为第一种的实现，而第二种却没有，虽然早期版本提供了 `LCUI_UnbindEvent2()` 作为第二种方式的实现，但由于这是个糟糕的设计，在后废弃了。我们可以借此机会为事件模块重新设计一套接口。
+事件解绑方式有 `eventId + eventHandler` 和 `eventHandlerId` 这两种，LCUI 提供了 `LCUI_UnbindEvent()` 函数作为第一种的实现，而第二种却没有，虽然早期版本提供了 `LCUI_UnbindEvent2()` 作为第二种方式的实现，但由于这是个糟糕的设计，在后续的更新中废弃了。我们可以借此机会为事件模块重新设计一套接口。
 

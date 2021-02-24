@@ -11,7 +11,7 @@ description: 介绍组件属性的分类及用途。
 基础属性分为只读和可写两种：
 
 * 只读的基础属性是经过计算后的结果，手动修改它们的值是没有意义的，因为它们的值会在下次计算后更新，例如：x、y、width、height 这些几何属性，它们是组件的样式经过布局引擎计算后的结果。
-* 可写的基础属性能影响组件的功能和渲染效果，例如：修改 `disabled` 和 `event_blocked` 能控制组件的事件响应行为， 修改 `custom_style` 能覆盖组件原本的样式。这些属性大都有相关的函数来负责修改它们，我们只需要它们即可。
+* 可写的基础属性能影响组件的功能和渲染效果，例如：修改 `disabled` 和 `event_blocked` 能控制组件的事件响应行为， 修改 `custom_style` 能覆盖组件原本的样式。这些属性大都有相关的函数来负责修改它们，我们只需要调用它们即可。
 
 接下来让我们通过示例代码来了解一些常用的基础属性。
 
@@ -39,7 +39,7 @@ if (Widget_HasStatus(w, "focus")) {
 
 // 打印最终样式
 LCUI_PrintStyleSheet(w->style);
-// 打印继承的样式
+// 打印匹配的样式
 LCUI_PrintStyleSheet(w->inherited_style);
 // 设置自定义样式
 Widget_SetStyle(w, key_margin_left, 10, px);
