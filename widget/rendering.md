@@ -6,7 +6,7 @@ description: 介绍组件从更新到绘制到屏幕上所经历的流程，以�
 
 “渲染”就是将组件数据转变为像素数据，这个转变如同一条包含很多区域的单向管道，组件数据经过管道中的每个区域的处理最终变成像素数据。我们可以将这个管道称为像素管道，它的结构如下图所示：
 
-![&#x50CF;&#x7D20;&#x7BA1;&#x9053;&#x7684;&#x5404;&#x4E2A;&#x533A;&#x57DF;](../.gitbook/assets/pixel-pipe.png)
+![&#x50CF;&#x7D20;&#x7BA1;&#x9053;&#x7684;&#x5404;&#x4E2A;&#x533A;&#x57DF;](../.gitbook/assets/pixel-pipe-1.png)
 
 * **事件：**界面的更新是由事件驱动的，通常我们会在事件处理器中实现一些操作和视觉变化的效果。比如显示一个加载中动画、切换到另一个界面、或者往界面里添加一些内容等。
 * **样式计算：**此过程是根据匹配选择器（例如 `.button` 或 `.list .list-item`）计算出哪些组件应用哪些 CSS 规则的过程。从中知道规则之后，将应用规则并计算每个元素的最终样式。
@@ -16,19 +16,17 @@ description: 介绍组件从更新到绘制到屏幕上所经历的流程，以�
 
 管道的每个部分都有机会产生卡顿，因此务必准确了解你的代码触发管道的哪些部分。
 
-![](../.gitbook/assets/pixel-pipe.png)
-
 不一定每帧都总是会经过管道每个部分的处理。在实现视觉变化时，管道针对指定帧的运行通常有三种方式：
 
 **1. 事件 &gt; 样式 &gt; 布局 &gt; 绘制 &gt; 合成**
 
-![](https://gblobscdn.gitbook.com/assets%2F-MJ04kFHYqrADYVyG9qI%2F-MTaJ0EBiSdYrmq6i3xw%2F-MTddiKDTZdSNnC3w8l5%2Fpixel-pipe.png?alt=media&token=2240c3ab-df38-4df2-a760-c5675f381666)
+![](../.gitbook/assets/pixel-pipe-1.png)
 
 如果你修改了组件的布局属性，即改变了组件的几何属性（例如宽度、高度、左侧或顶部位置等），那么 LCUI 将必须检查所有其它组件，然后对界面进行重新布局。任何受影响的部分都需要重新绘制，而且最终绘制的元素需进行合成。
 
 **2. 事件 &gt; 样式 &gt; 绘制 &gt; 合成**
 
-![](../.gitbook/assets/pixel-pipe-without-layout.png)
+![](../.gitbook/assets/pixel-pipe-2.png)
 
 如果你修改了组件的绘制属性，即不会影响界面布局的属性（例如背景图片、文字颜色或阴影等），则 LCUI 会跳过布局，但仍将执行绘制。
 
