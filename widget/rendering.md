@@ -40,11 +40,9 @@ description: 介绍组件从更新到绘制到屏幕上所经历的流程，以�
 
 ### 事件
 
-事件的处理器经常会触发视觉变化。有时是直接通过样式操作，有时是会产生视觉变化的计算，例如搜索数据或将其排序。时机不当或长时间运行的代码可能是导致性能问题的常见原因。您应当设法尽可能减少其影响。
+事件处理器经常会触发视觉变化。有时是直接通过样式操作，有时是会产生视觉变化的计算，例如搜索数据或将其排序。时机不当或长时间运行的代码可能是导致性能问题的常见原因。您应当设法尽可能减少其影响。
 
-概要：
-
-* 将耗时长的代码从主线程移动到工作线程，详见[工作线程](../app/worker.md)章节。
+在许多情况下，你可以将事件处理器中的耗时长的代码从主线程移动到工作线程，详见[工作线程](../app/worker.md)章节。不过在工作线程上你必须确保这些代码不会操作 UI 相关资源， 如果你的工作必须在主线程上执行，请考虑一种分批处理的方法，将大任务分割为小任务，每个小任务所占时间不超过几毫秒，然后使用定时器逐个执行这些任务。
 
 ### 样式计算
 
@@ -100,6 +98,10 @@ description: 介绍组件从更新到绘制到屏幕上所经历的流程，以�
 样式匹配是样式计算过程中耗时较高的一个操作，它的实现代码在 [src/gui/css\_library.c](https://github.com/lc-soft/LCUI/blob/345031d74ca65225ec3623e0c92d448f54f5052b/src/gui/css_library.c#L1383-L1423) 中，需要优化的地方就在 `LCUI_FindStyleSheetFromGroup()`  -&gt;`SelectorNode_GetNames()` -&gt;`SelectorNode_GetNames()`  -&gt; `NamesFinder_Find()` 这个函数调用链中。
 
 在查询样式数据库前，`LCUI_FindStyleSheetFromGroup()` 函数会调用 `SelectorNode_GetNames()` 函数获取选择器节点的所有名称组合，该函数只是简单的调用了 `NamesFinder_Find()` 函数，而 `NamesFinder_Find()` 函数则负责根据给定的选择器节点中的 id、类型、类和伪类来生成所有的组合，涉及较多的字符串操作。
+
+**添加** `LCUI_RequestAnimationFrame()` **函数**
+
+参考 [window.requestAnimationFrame](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/requestAnimationFrame) 的设计。
 
 **添加渲染性能监视器**
 
