@@ -279,7 +279,6 @@ int main(void)
 * 实现异步操作时，要写一些复杂的代码解决传参和同步问题
 * 项目的源码文件多了后，需要花时间维护 Makefile 和构建脚本
 * 用 C 语言以面向对象方式编程的体验较差
-* （略）
 
 Trad 语言诞生的目的就是为了解决这些问题，首先我们看看上面的示例应用是如何以 Trad 语言表达的： 
 
@@ -330,6 +329,8 @@ export function main() {
   return app.run();
 }
 ```
+
+在 Trad 语言中，LCUI 应用的 UI 编写方式参考了 [React](https://reactjs.org/)，不再是采用将标记与逻辑分离到不同文件这种人为地分离方式，而是通过将二者共同存放在一个松散耦合单元之中，来实现[关注点分离](https://en.wikipedia.org/wiki/Separation_of_concerns)。
 
 为了编译它，我们需要下载安装 Trad 语言的编译器：
 
