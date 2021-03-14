@@ -198,7 +198,7 @@ int main(void)
 
 这段代码将文本颜色和字体大小分别设置成了蓝色和 24px，并增加了边框和内间距，其中，`Widget_SetPadding()` 和 `Widget_SetBorder()` 都是用于简化样式修改操作的辅助函数，而 `key_` 前缀的标识符引用的是 `LCUI_StyleKeyName` 类型的枚举值，命名与 CSS 属性相同，你可以通过查看 [css\_library.h](https://github.com/lc-soft/LCUI/blob/345031d74ca65225ec3623e0c92d448f54f5052b/include/LCUI/gui/css_library.h#L44) 文件来了解 LCUI 支持哪些 CSS 属性。
 
-### 用 XML 和 CSS 描述用户界面
+### 用 XML 和 CSS 描述 UI
 
 当应用程序的界面变得复杂后，混合着界面布局和样式以及交互逻辑的代码也会变得难以理解和维护，面对满屏的 `Widget_` 函数调用和赋值语句，我们该如何快速找到需要修改的样式，又该如何快速调整界面的布局结构？
 
@@ -272,7 +272,7 @@ int main(void)
 
 `main.c` 文件中调用 `LCUIBuilder_LoadFile()` 函数加载 `main.xml` 文件内容并构建成组件树，由于这颗组件树的根节点是个只用于包装子组件的容器组件，我们需要先调用 `Widget_Append()` 函数将它追加到根部件里然后调用 `Widget_Unwrap()` 函数移除包装组件。
 
-### 以声明式编写用户界面
+### 以声明式编写 UI
 
  使用 XML 和 CSS 来描述界面以达到结构、表现和行为相分离的目的，这种做法和使用 HTML + CSS + JavaScript 开发网页一样，是数十年前就有的开发方式，算不上有多先进，LCUI 的存在目的如果只是为了模仿浏览器的话那也没什么意义，目前在新的用户界面的探索和实践成果中，能值得一提的是实验性的编程语言 ——Trad，在介绍它之前，我们或多或少也能意识到现在使用 C 语言开发用户界面的一些问题：
 
