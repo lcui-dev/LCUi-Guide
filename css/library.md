@@ -149,7 +149,7 @@ int main(void)
    2. 如果有样式链接组，则遍历样式链接组，并调用 `LCUI_FindStyleSheetFromLink()` 函数从中获取样式表。
 4. 清除名称组合，然后返回匹配的样式表数量。
 
-从这个过程我们可以看出 `LCUI_FindStyleSheet()` 函数只是负责定位查询入口，剩下的查询则交给了`LCUI_FindStyleSheetFromLink()` 函数，它主要做了这两个工作：
+从这个过程我们可以看出 `LCUI_FindStyleSheet()` 函数只是负责定位查询入口，剩下的查询工作则交给了`LCUI_FindStyleSheetFromLink()` 函数，而它主要做了这两个工作：
 
 1. 将当前样式链接中的样式表追加到输出结果中。
 2. 继续从右到左遍历选择器结点，为每个样式结点生成名称组合，然后以名称组合为索引键从父级样式链接表 `parents` 中查找样式链接，如果存在则基于该父级样式链接和当前选择器结点，调用 `LCUI_FindStyleSheetFromLink()` 函数继续查询样式表。
