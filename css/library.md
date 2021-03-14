@@ -81,7 +81,7 @@ int main(void)
 
 经过加载后，它的存储结构如下图所示：
 
-（图）
+![CSS &#x6570;&#x636E;&#x5E93;&#x7684;&#x5B58;&#x50A8;&#x7ED3;&#x6784;](../.gitbook/assets/css-library-struct.png)
 
 存储过程如下：
 
