@@ -366,6 +366,10 @@ LCUI 的 xml 文件解析功能是由 libxml 库提供支持的，为了缩减 L
 
 集成 SASS 预处理器，支持对多个 scss 或 css 文件进行处理、合并和编译，其中的编译只是简单的将处理后的结果转换成 C 中的字符串代码，无需生成 `LCUI_StyleSheet` 对象的构造代码。
 
+**支持编译为  WebAssembly 并在浏览器端运行**
+
+详见 [\#207](https://github.com/lc-soft/LCUI/issues/207)。
+
 **重写 Trad 的编译器**
 
  Trad 的编译器的语法树和生成器的实现代码是混在一起的，代码中大量使用了 class 继承特性，导致功能模块间的耦合度较高，添加新语法解析支持的难度较大。为了解决这些问题，可以参考 [babel](https://github.com/babel/babel/tree/master/packages) 编译器的做法，将代码划分为语法树（AST）、解析器（Parser）、生成器（Generator）。 对于语法树的代码划分，可以参考 [babel-types](https://github.com/babel/babel/tree/master/packages/babel-types) 和 [babel-traverse](https://github.com/babel/babel/tree/master/packages/babel-traverse)，前者用于语法树结点的工具库，后者用于维护整棵树的状态，包括替换、移除和添加结点。
