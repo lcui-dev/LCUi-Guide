@@ -6,8 +6,6 @@ description: 这是一个 LCUI 文档及相关资源的概览页面。
 
 **LCUI** 是一个用于构建用户界面的 C 库。
 
-（文档待完善）
-
 ### 基本假设 <a id="assumptions"></a>
 
  本文档假设你已经熟悉了  C 语言的中级知识，具备解决开发环境配置和常见编译问题的能力，且了解过包括  [HTML](https://developer.mozilla.org/docs/Learn/HTML/Introduction_to_HTML)，[CSS](https://developer.mozilla.org/docs/Learn/CSS/First_steps) 和 [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript) 在内的 Web 开发技术。如果你刚开始学习 C 开发，将函数库作为你的第一步可能不是最好的主意——掌握好基础知识再来吧！之前有其它库的使用经验会有帮助，但这不是必需的。
@@ -36,7 +34,7 @@ description: 这是一个 LCUI 文档及相关资源的概览页面。
 
 请到 GitHub 上的仓库中创建 [Pull Request](https://github.com/lc-ui/lcui-guide/pulls) 来为 LCUI 文档做出贡献。 [贡献者指南](https://github.com/lc-soft/LCUI/blob/master/CONTRIBUTING.md)将会帮助你更好的为社区做贡献。
 
-希望帮忙改进 LCUI？此文档中的部分章节会列出一些待办事项，其中有的待办事项还会简单介绍大致的解决思路，如果你有发现自己感兴趣的待办事项，欢迎在 [LCUI 的 GitHub 主页](https://github.com/lc-soft/LCUI)上向我们提交 Pull Request。不过在提交 Pull Request 前，我们建议你先提交一个 Issue，告知我们你准备接手哪一个待办事项，然后简单说明它的解决方案。
+希望帮忙改进 LCUI？此文档中的部分章节会列出一些与之相关的待办事项，其中有的还会简单介绍大致的解决思路，如果你有发现自己感兴趣的待办事项，欢迎在 [LCUI 的 GitHub 主页](https://github.com/lc-soft/LCUI)上向我们提交 Pull Request。不过在提交 Pull Request 前，我们建议你先提交一个 Issue，告知我们你准备接手哪一个待办事项，然后简单说明它的解决方案。
 
 我们的社区提倡相互尊重、相互支持。 参阅[社区行为规范](https://github.com/lc-soft/LCUI/blob/master/CODE_OF_CONDUCT.md)。
 
