@@ -7,6 +7,7 @@
   * [约定](base/convention.md)
   * [XML](base/xml-syntax.md)
   * [CSS](base/css-syntax.md)
+  * [架构](base/architecture.md)
 * [实例](app/README.md)
   * [主循环](app/mainloop.md)
   * [工作线程](app/worker.md)
