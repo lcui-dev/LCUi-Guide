@@ -1,5 +1,7 @@
 # 文本排版与渲染
 
+文字是程序通过界面向用户传递信息的一种最为简单高效的方式，而将这些文字以合理方式的排列并渲染到屏幕上也是界面的基本功能。本章节将介绍 LCUI 中的文字排版与渲染相关概念和用法，并通过一些示例来帮助你快速理解。
+
 ### 简单的例子
 
 以下例子展示了如何使用文本层（TextLayer）将一段文本渲染到 320x240 尺寸的图片中。
@@ -93,7 +95,7 @@ int main(void)
 
 ### 光标
 
-光标（Caret）主要为 TextEdit 组件服务，它的位置即是文本插入位置，可通过 `insert_x` __和  `insert_y` 成员获取该位置。当调用 `TextLayer_InsertText()` 函数时，文本就会插入到光标所处的位置。
+光标（Caret）主要为 TextEdit 组件服务，它的位置即是文本插入位置，访问文本层对象的 `insert_x` __和  `insert_y` 成员可获取该位置。当调用 `TextLayer_InsertText()` 函数时，文本就会插入到光标所处的位置。
 
 `insert_x` __和  `insert_y` 成员分别记录光标所在的列和行，对于像 TextEdit 组件这种需要光标的实际像素坐标来绘制光标的情况，则需要调用：
 
@@ -113,7 +115,7 @@ int TextLayer_SetCaretPosByPixelPos(LCUI_TextLayer layer, int x, int y);
 
 ### 坐标偏移量
 
-坐标偏移量（Offset）影响文本的绘制位置，主要用于实现滚动功能，可通过 `offset_x`  和 `offset_y` 访问当前应用的坐标偏移量。典型的例子就是 TextEdit 组件，当它的文本内容超出自身尺寸时就会显示滚动条，用户拖动滚动条本质上就是在更改坐标偏移量。
+坐标偏移量（Offset）影响文本的绘制位置，主要用于实现滚动功能，访问文本层对象的 `offset_x`  和 `offset_y` 成员可获得它的坐标偏移量。典型的例子就是 TextEdit 组件，当它的文本内容超出自身尺寸时就会显示滚动条，用户拖动滚动条本质上就是在更改坐标偏移量。
 
 坐标偏移量的修改函数是：
 
@@ -133,6 +135,11 @@ int TextLayer_RenderTo(LCUI_TextLayer layer, LCUI_Rect area, LCUI_Pos layer_pos,
 ```
 
 在它的参数中，`area` 指定了文本层中需要渲染的区域，`pos` 指定了这块区域在画布中的坐标，而`canvas` 就是用于存储渲染结果的画布。
+
+如需了解更多用法，可参考预置组件的源码：
+
+* [src/gui/widget/textview.c](https://github.com/lc-soft/LCUI/blob/345031d74ca65225ec3623e0c92d448f54f5052b/src/gui/widget/textview.c#L281)
+* [src/gui/widget/textedit.c](https://github.com/lc-soft/LCUI/blob/345031d74ca65225ec3623e0c92d448f54f5052b/src/gui/widget/textedit.c#L933)
 
 ### 待办事项
 
