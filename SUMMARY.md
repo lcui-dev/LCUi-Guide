@@ -27,7 +27,7 @@
   * [盒模型](layout/box-model.md)
   * [正常布局流](layout/normal-flow-layout.md)
   * [弹性盒子布局](layout/flexbox.md)
-  * [定位](layout/poposition.md)
+  * [定位](layout/position.md)
 * [图形](graphics/README.md)
   * [图形渲染](graphics/rendering.md)
   * [图像编辑](graphics/image-edit.md)
