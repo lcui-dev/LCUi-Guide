@@ -4,8 +4,6 @@ description: LCUI 的架构介绍。
 
 # 架构
 
-[软件架构](https://zh.wikipedia.org/wiki/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84)是有关软件整体结构与组件的抽象描述，用于指导大型软件系统各个方面的设计，它包括了软件组件、组件之间的关系，组件特性以及组件间关系的特性。
-
 ![&#x67B6;&#x6784;&#x56FE;](../.gitbook/assets/architecture.png)
 
 如上图所示，从底至上，LCUI 由如下几大模块组成：
