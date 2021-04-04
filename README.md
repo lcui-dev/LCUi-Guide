@@ -4,7 +4,7 @@ description: 这是一个 LCUI 文档及相关资源的概览页面。
 
 # 开始
 
-**LCUI** 是一个能让你使用 C、XML 和 CSS 来为桌面应用程序构建图形用户界面的 C 函数库。
+**LCUI** 是一个用于构建用户界面的 C 库。
 
 ### 基本假设 <a id="assumptions"></a>
 
@@ -25,7 +25,6 @@ description: 这是一个 LCUI 文档及相关资源的概览页面。
 * [Angular 文档](https://angular.cn/docs)
 * [Ant Design 文档](https://ant.design/docs/react/introduce-cn)
 * [MDN Web Docs](https://developer.mozilla.org/zh-CN/docs/learn)
-* [Electron 文档](http://www.electronjs.org/docs/tutorial/quick-start)
 
 ### 反馈 <a id="&#x5982;&#x4F55;&#x8D21;&#x732E;"></a>
 
