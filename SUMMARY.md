@@ -42,4 +42,5 @@
   * [鼠标](driver/mouse.md)
   * [键盘](driver/keyboard.md)
   * [触控](driver/touchscreen.md)
+* [输入法](ime.md)
 
