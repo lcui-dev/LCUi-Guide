@@ -25,7 +25,7 @@
   * [CSS 解析器](css/parser.md)
 * [布局](layout/README.md)
   * [盒模型](layout/box-model.md)
-  * [正常布局流](layout/normal-flow-layout.md)
+  * [正常流布局](layout/normal-flow-layout.md)
   * [弹性盒子布局](layout/flexbox.md)
   * [定位](layout/position.md)
 * [图形](graphics/README.md)
