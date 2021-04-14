@@ -125,7 +125,7 @@ typedef struct LCUI_DisplayDriverRec_ {
 
 #### getHandle
 
-获取表面的窗口句柄。在 Windows 的视频驱动中，这个函数被用于在事件循环驱动中处理 `WM_CLOSE` 消息时判断应该关闭哪个表面。而在其它系统的视频驱动中，没有这种处理，`getHandle()` 的返回值为 NULL，它们对窗口关闭事件的响应是直接退出 LCUI。
+获取表面的窗口句柄。在 Windows 的视频驱动中，这个函数被用于在事件循环驱动中处理 `WM_CLOSE` 消息时判断应该关闭哪个表面。在其它系统的视频驱动中并没有这种处理，`getHandle()` 的返回值为 NULL，它们对窗口关闭事件的响应是直接退出 LCUI。
 
 #### getSurfaceWidth
 
