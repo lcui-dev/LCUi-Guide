@@ -29,7 +29,7 @@
   * [弹性盒子布局](layout/flexbox.md)
   * [定位](layout/position.md)
 * [图形](graphics/README.md)
-  * [图形渲染](graphics/rendering.md)
+  * [绘制图形](graphics/drawing.md)
   * [图像编辑](graphics/image-edit.md)
   * [图像文件操作](graphics/image-file-operation.md)
 * [字体](font/README.md)
