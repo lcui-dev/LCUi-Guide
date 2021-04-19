@@ -266,9 +266,103 @@ int main(void)
 
 #### 拉伸背景图
 
-#### 平铺背景图
+当背景图的尺寸与背景区域尺寸不同时，我们可以通过设置宽高属性来让背景图填满背景区域：
 
-#### 居中背景图
+```c
+#include <LCUI.h>
+#include <LCUI/graph.h>
+#include <LCUI/image.h>
+#include <LCUI/painter.h>
+
+int main(void)
+{
+        LCUI_Graph canvas;
+        LCUI_Graph image;
+        LCUI_Color gray = { .value = 0xfff0f0f0 };
+        LCUI_Color green = { .r = 102, .g = 204, .b = 0 };
+        LCUI_Rect rect = { 200, 100, 400, 300 };
+        LCUI_Background bg = { 0 };
+        LCUI_PaintContext paint;
+
+        Graph_Init(&canvas);
+        Graph_Init(&image);
+        Graph_Create(&canvas, 800, 600);
+        Graph_FillRect(&canvas, gray, NULL, FALSE);
+        // 读取背景图片
+        if (LCUI_ReadImageFile("test_image_reader.png", &image) != 0) {
+                return -1;
+        }
+        // 设置背景色
+        bg.color = green;
+        // 设置背景图
+        bg.image = &image;
+        // 将背景图设置成与背景区域相同的尺寸
+        bg.size.width = rect.width;
+        bg.size.height = rect.height;
+        // 创建绘制上下文
+        paint = LCUIPainter_Begin(&canvas, &rect);
+        // 绘制背景
+        Background_Paint(&bg, &rect, paint);
+        LCUI_WritePNGFile("test_paint_background_image_with_size.png", &canvas);
+        LCUIPainter_End(paint);
+        Graph_Free(&image);
+        Graph_Free(&canvas);
+        return 0;
+}
+
+```
+
+![test\_paint\_background\_image\_with\_size.png](../.gitbook/assets/test_paint_background_image_with_size.png)
+
+#### 设置背景图位置
+
+```c
+#include <LCUI.h>
+#include <LCUI/graph.h>
+#include <LCUI/image.h>
+#include <LCUI/painter.h>
+
+int main(void)
+{
+        LCUI_Graph canvas;
+        LCUI_Graph image;
+        LCUI_Color gray = { .value = 0xfff0f0f0 };
+        LCUI_Color green = { .r = 102, .g = 204, .b = 0 };
+        LCUI_Rect rect = { 200, 100, 400, 300 };
+        LCUI_Background bg = { 0 };
+        LCUI_PaintContext paint;
+
+        Graph_Init(&canvas);
+        Graph_Init(&image);
+        Graph_Create(&canvas, 800, 600);
+        Graph_FillRect(&canvas, gray, NULL, FALSE);
+        // 读取背景图片
+        if (LCUI_ReadImageFile("test_image_reader.png", &image) != 0) {
+                return -1;
+        }
+        // 设置背景色
+        bg.color = green;
+        // 设置背景图
+        bg.image = &image;
+        bg.size.width = image.width;
+        bg.size.height = image.height;
+        // 让背景图居中
+        bg.position.x = (rect.width - image.width) / 2;
+        bg.position.y = (rect.height - image.height) / 2;
+        // 创建绘制上下文
+        paint = LCUIPainter_Begin(&canvas, &rect);
+        // 绘制背景
+        Background_Paint(&bg, &rect, paint);
+        LCUI_WritePNGFile("test_paint_background_image_with_position.png", &canvas);
+        LCUIPainter_End(paint);
+        Graph_Free(&image);
+        Graph_Free(&canvas);
+        return 0;
+}
+
+```
+
+![test\_paint\_background\_image\_with\_position.png](../.gitbook/assets/test_paint_background_image_with_position.png)
 
 ### 绘制边框
 
@@ -276,5 +370,9 @@ int main(void)
 
 ### 绘制阴影
 
+待办事项
 
+**添加样式转绘制参数的函数**
+
+从上面的绘制背景图的示例代码中我们可以看出像位置、尺寸这类参数都要我们编写代码去计算，要是能用 css 代码描述的话会方便很多，因此，我们需要一个函数能够读取样式表中的 `background-` 开头的属性然后输出成`LCUI_Background` 类型的对象。
 
