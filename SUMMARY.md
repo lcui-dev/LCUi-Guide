@@ -16,6 +16,7 @@
 * [组件](widget/README.md)
   * [属性](widget/attributes.md)
   * [样式](widget/style.md)
+  * [方法](widget/methods.md)
   * [原型](widget/prototype.md)
   * [事件](widget/events.md)
   * [生命周期](widget/lifecycle.md)
