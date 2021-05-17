@@ -42,7 +42,7 @@ lcui create my-lcui-app
 cd my-lcui-app
 
 # 准备开发环境
-lcui setup
+lcui bootstrap
 
 # 构建项目
 lcui build
