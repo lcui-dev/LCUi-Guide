@@ -30,7 +30,6 @@
   * [绘制简单的图形](graphics/drawing-simple-graphics.md)
   * [绘制复杂的图形](graphics/drawing-complex-graphics.md)
   * [像素操作](graphics/xiang-su-cao-zuo.md)
-  * [图像编辑](graphics/image-edit.md)
   * [图像文件操作](graphics/image-file-operation.md)
 * [字体](font/README.md)
   * [字体数据库](font/library.md)
