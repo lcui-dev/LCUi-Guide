@@ -51,9 +51,5 @@ lcui build
 lcui run
 ```
 
-{% hint style="warning" %}
-CLI 工具假定用户对 Node.js 和相关构建工具有一定程度的了解。如果你是新手，我们强烈建议先在不用构建工具的情况下通读指南，在熟悉 LCUI 本身之后再使用 CLI。
-{% endhint %}
-
 
 

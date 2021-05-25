@@ -12,8 +12,6 @@ LCUI 是一个用于构建用户界面的 C 库。其定位是探索和实践新
 
 尝试 LCUI 最简单的方法是使用 [lcui-quick-start](https://github.com/lc-ui/lcui-quick-start) 例子。你可以下载它然后按照 README.md 中描述的步骤编译并运行它，跟着例子学习一些基础用法。
 
-[安装教程](installation.md)给出了更多安装 LCUI 的方式。请注意我们**不推荐**新手直接使用 `lcui-cli`，尤其是在你还不熟悉基于 Node.js 的构建工具时。
-
 ### 创建基本应用程序
 
 先从最简单的代码开始：
@@ -55,7 +53,7 @@ int main(void)
 
 TextView 是一个提供文本渲染功能的预置组件，我们可以使用它将 `Hello, World!` 文本渲染到屏幕上。在使用 TextView 组件之前，我们需要调用 `LCUIWidget_New()` 函数来创建一个组件实例，其中 `"textview"` 参数是 TextView 在组件原型库中注册的名字， `LCUIWidget_New()` 函数根据这个名字找到对应的组件原型后，会调用原型中的 `init` 函数对组件实例进行初始化，这个过程类似于 C++ 中的 `new Class()`。
 
-在 LCUI 底层实现中，所有类型的组件都共用同一个数据结构，这意味着我们只需要用 `LCUI_Widget` 这一种类型的指针来引用组件，从 `LCUIWdget_New()` 函数拿到组件实例后，我们调用了一些函数设置它的文本内容并将它追加到根组件内，其中 `Widget_` 前缀的函数是所有组件通用的函数，可以用于操作组件的基本属性、样式、布局等，而 `TextView_` 前缀的函数则是 TextView 组件专用的函数。
+在组件系统的底层实现中，所有类型的组件都共用同一个数据结构，这意味着我们只需要用 `LCUI_Widget` 这一种类型的指针来引用组件实例。从 `LCUIWdget_New()` 函数拿到组件实例后，我们调用了一些函数设置它的文本内容并将它追加到根组件内，其中 `Widget_` 前缀的函数是所有组件通用的函数，可以用于操作组件的基本属性、样式、布局等，而 `TextView_` 前缀的函数则是 TextView 组件专用的函数。
 
 ### 处理用户输入
 
@@ -142,7 +140,7 @@ int main(void)
 }
 ```
 
-事件处理器 `OnButtonClick()` 的工作是从 TextEdit 组件中读取用户输入的内容然后写入到 TextView 组件中，为了让它能够获得 TextView 和 TextEdit 组件实例，我们在 `main()` 函数中定义了 `button_data` 数组来保存它们的引用，然后通过 `Widget_BindEvent()` 第四个参数将该数组绑定到 `e->data` 成员以供事件处理器访问。
+事件处理器 `OnButtonClick()` 的工作是从 TextEdit 组件中读取用户输入的内容然后写入到 TextView 组件中，为了让它能够获得 TextView 和 TextEdit 组件实例，我们在 `main()` 函数中定义了 `button_data` 数组来保存它们的引用，然后通过 `Widget_BindEvent()` 的第四个参数将该数组绑定到 `e->data` 成员以供事件处理器访问。
 
 需要注意的是，在使用局部变量向事件处理器传递数据前，我们需要注意变量的生命周期，以避免出现内存访问越界的问题。由于上面的示例中的 `main()` 受到 `LCUI_Main()` 函数的阻塞，它的局部变量的生命周期要等到 `LCUI_Main()` 函数返回后才会结束，也就是说 `main()` 函数的局部变量在 LCUI 的整个生命周期中都是有效的。
 
@@ -198,7 +196,7 @@ int main(void)
 }
 ```
 
-这段代码将文本颜色和字体大小分别设置成了蓝色和 24px，并增加了边框和内间距，其中，`Widget_SetPadding()` 和 `Widget_SetBorder()` 都是用于简化样式修改操作的辅助函数，而 `key_` 前缀的标识符引用的是 `LCUI_StyleKeyName` 类型的枚举值，命名与 CSS 属性相同，你可以通过查看 [css\_library.h](https://github.com/lc-soft/LCUI/blob/345031d74ca65225ec3623e0c92d448f54f5052b/include/LCUI/gui/css_library.h#L44) 文件来了解 LCUI 支持哪些 CSS 属性。
+这段代码将文本颜色和字体大小分别设置成了蓝色和 24px，并增加了边框和内间距，其中的 `Widget_SetPadding()` 和 `Widget_SetBorder()` 都是用于简化样式修改操作的辅助函数，而 `key_` 前缀的标识符引用的是 `LCUI_StyleKeyName` 类型的枚举值，命名与 CSS 属性相同，你可以通过查看 [css\_library.h](https://github.com/lc-soft/LCUI/blob/345031d74ca65225ec3623e0c92d448f54f5052b/include/LCUI/gui/css_library.h#L44) 文件来了解 LCUI 支持哪些 CSS 属性。
 
 ### 用 XML 和 CSS 描述 UI
 
