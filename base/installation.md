@@ -10,7 +10,7 @@ LCUI 在其所有项目中公布的功能和行为都遵循[语义化版本控�
 
 #### 更新日志 <a id="&#x66F4;&#x65B0;&#x65E5;&#x5FD7;"></a>
 
-最新稳定版本：2.1.0
+最新稳定版本：2.2.0
 
 每个版本的更新日志见 [GitHub](https://github.com/lc-soft/LCUI/releases)。
 
