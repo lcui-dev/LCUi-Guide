@@ -8,7 +8,7 @@ description: 介绍组件的原型相关概念和用法。
 
 ### 原型方法
 
-原型中记录了 LCUI 在更新和渲染组件时需要用到的方法，通过将这些方法与自定义函数绑定，可实现对组件的扩展。关于原型的定义，你可以在 [include/LCUI/gui/widget\_base.h](https://github.com/lc-soft/LCUI/blob/345031d74ca65225ec3623e0c92d448f54f5052b/include/LCUI/gui/widget_base.h#L140-L164) 中找到。
+原型中记录了 LCUI 在更新和渲染组件时需要用到的方法，通过将这些方法与自定义函数绑定，可实现对组件的扩展。关于原型的定义，你可以在 [include/LCUI/widget\_bash.h](https://github.com/lc-soft/LCUI/blob/345031d74ca65225ec3623e0c92d448f54f5052b/include/LCUI/gui/widget_base.h#L140-L164) 中找到。
 
 接下来让我们深入了解原型中的各个方法的用途。
 
