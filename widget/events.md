@@ -10,7 +10,7 @@ description: 组件事件的相关概念和用法介绍。
 
 ### 事件对象
 
-首先，让我们看看组件事件对象在[ include/LCUI/gui/widget\_event.h](https://github.com/lc-soft/LCUI/blob/345031d74ca65225ec3623e0c92d448f54f5052b/include/LCUI/gui/widget_event.h#L81-L95) 文件中的定义：
+首先，让我们看看组件事件对象在[ include/LCUI/gui/widget\_event.h](https://github.com/lc-soft/LCUI/blob/345031d74ca65225ec3623e0c92d448f54f5052b/include/LCUI/gui/widget\_event.h#L81-L95) 文件中的定义：
 
 ```c
 typedef struct LCUI_WidgetEventRec_ {
@@ -32,7 +32,7 @@ typedef struct LCUI_WidgetEventRec_ {
 我们可以发现，组件事件对象与核心事件对象的结构相似，只是多了 `target` 和 `cacnel_buble` 成员：
 
 * `target` 成员指向的是事件触发时的组件，当你想让多个组件在事件发生时执行某些操作而给它们设置相同的事件处理器时，`target` 非常有用，例如，有 16 个按钮，按钮被点击时会更改文本，那么在事件处理器中，`target` 指向的就是当前被点击的按钮，你只需要修改它的文本即可，无需用复杂的方式去获取它。
-*  `cancel_bubble` 成员用于标识是否取消该事件的冒泡，将它赋值为 TRUE 时，该事件对象不会冒泡到父级组件。
+* &#x20;`cancel_bubble` 成员用于标识是否取消该事件的冒泡，将它赋值为 TRUE 时，该事件对象不会冒泡到父级组件。
 
 ### 事件冒泡
 
@@ -175,13 +175,13 @@ int main(int argc, char **argv)
 
 编译后运行，如果你的计算机自带触屏，则可以用手指在程序窗口内点击和移动，然后会看到类似于如下图所示的效果：
 
-![&#x8FD0;&#x884C;&#x6548;&#x679C;](../.gitbook/assets/gui_events_touch.gif)
+![运行效果](../.gitbook/assets/gui\_events\_touch.gif)
 
 这个程序实现的功能是捕获各个触点并用对应的红色方块表示触点的位置，有个 `touch_bindings` 全局变量用于保存各个触点和组件的绑定记录，在响应触控事件时会遍历每个触点，根据触点的 id 在绑定记录中找对应的组件，找到后会根据触点的坐标来更新组件的坐标。为了让组件能够捕获触点在它外面产生的触控事件，并且不被其它组件捕获到，调用了 `Widget_SetTouchCapture()` 函数实现对该触点的独占，在触点释放后，调用 `Widget_ReleaseTouchCapture()` 函数解除对触点的独占。
 
 ### 待办事项
 
-完**善焦点管理**
+**完善焦点管理**
 
 需求如下：
 
@@ -189,4 +189,3 @@ int main(int argc, char **argv)
 * 已获得焦点的组件应该有显眼的外边框。
 
 关于外边框的实现，我们可以先为 CSS 解析器添加  outline 属性解析支持，然后在组件渲染流程中增加一个外边框绘制操作。
-

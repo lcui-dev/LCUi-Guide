@@ -142,7 +142,7 @@ int main(void)
 
 事件处理器 `OnButtonClick()` 的工作是从 TextEdit 组件中读取用户输入的内容然后写入到 TextView 组件中，为了让它能够获得 TextView 和 TextEdit 组件实例，我们在 `main()` 函数中定义了 `button_data` 数组来保存它们的引用，然后通过 `Widget_BindEvent()` 的第四个参数将该数组绑定到 `e->data` 成员以供事件处理器访问。
 
-需要注意的是，在使用局部变量向事件处理器传递数据前，我们需要注意变量的生命周期，以避免出现内存访问越界的问题。由于上面的示例中的 `main()` 受到 `LCUI_Main()` 函数的阻塞，它的局部变量的生命周期要等到 `LCUI_Main()` 函数返回后才会结束，也就是说 `main()` 函数的局部变量在 LCUI 的整个生命周期中都是有效的。
+在使用局部变量向事件处理器传递数据前，我们需要注意变量的生命周期，以避免出现内存访问越界的问题。由于上面的示例中的 `main()` 受到 `LCUI_Main()` 函数的阻塞，它的局部变量的生命周期要等到 `LCUI_Main()` 函数返回后才会结束，也就是说 `main()` 函数的局部变量在 LCUI 的整个生命周期中都是有效的。
 
 ### 设置文本样式
 
@@ -196,7 +196,7 @@ int main(void)
 }
 ```
 
-这段代码将文本颜色和字体大小分别设置成了蓝色和 24px，并增加了边框和内间距，其中的 `Widget_SetPadding()` 和 `Widget_SetBorder()` 都是用于简化样式修改操作的辅助函数，而 `key_` 前缀的标识符引用的是 `LCUI_StyleKeyName` 类型的枚举值，命名与 CSS 属性相同，你可以通过查看 [css\_library.h](https://github.com/lc-soft/LCUI/blob/345031d74ca65225ec3623e0c92d448f54f5052b/include/LCUI/gui/css_library.h#L44) 文件来了解 LCUI 支持哪些 CSS 属性。
+这段代码将文本颜色和字体大小分别设置成了蓝色和 24px，并增加了边框和内间距，其中的 `Widget_SetPadding()` 和 `Widget_SetBorder()` 都是用于简化样式修改操作的辅助函数，而 `key_` 前缀的标识符引用的是 `LCUI_StyleKeyName` 类型的枚举值，命名与 CSS 属性相同，你可以通过查看 [css\_library.h](https://github.com/lc-soft/LCUI/blob/345031d74ca65225ec3623e0c92d448f54f5052b/include/LCUI/gui/css\_library.h#L44) 文件来了解 LCUI 支持哪些 CSS 属性。
 
 ### 用 XML 和 CSS 描述 UI
 
@@ -274,13 +274,13 @@ int main(void)
 
 ### 以声明式编写 UI
 
- 使用 XML 和 CSS 来描述 UI 以达到结构、表现和行为相分离的目的，这种做法和使用 HTML + CSS + JavaScript 开发网页一样，是数十年前就有的开发方式，算不上有多先进，LCUI 的存在目的如果只是为了模仿浏览器的话那也没什么意义，目前 LCUI 在新的 UI 开发方式的探索和实践成果中，能值得一提的是实验性的编程语言 ——Trad，我们在用 C 语言开发 UI 时或许已经意识到一些问题：
+&#x20;使用 XML 和 CSS 来描述 UI 以达到结构、表现和行为相分离的目的，这种做法和使用 HTML + CSS + JavaScript 开发网页一样，是数十年前就有的开发方式，算不上有多先进，LCUI 的存在目的如果只是为了模仿浏览器的话那也没什么意义，目前 LCUI 在新的 UI 开发方式的探索和实践成果中，能值得一提的是实验性的编程语言 ——Trad，我们在用 C 语言开发 UI 时或许已经意识到一些问题：
 
 * 实现异步操作时，要写一些复杂的代码解决传参和同步问题
 * 项目的源码文件多了后，需要花时间维护 Makefile 和构建脚本
 * 用 C 语言以面向对象方式编程的体验较差
 
-Trad 语言诞生的目的就是为了解决这些问题，首先我们看看上面的示例应用是如何以 Trad 语言表达的： 
+Trad 语言诞生的目的就是为了解决这些问题，首先我们看看上面的示例应用是如何以 Trad 语言表达的：&#x20;
 
 ```jsx
 import {
@@ -330,7 +330,7 @@ export function main() {
 }
 ```
 
-在 Trad 语言中，LCUI 应用的 UI 编写方式参考了 [React](https://reactjs.org/)，不再是采用将标记与逻辑分离到不同文件这种人为地分离方式，而是通过将二者共同存放在一个松散耦合单元之中，来实现[关注点分离](https://en.wikipedia.org/wiki/Separation_of_concerns)。
+在 Trad 语言中，LCUI 应用的 UI 编写方式参考了 [React](https://reactjs.org)，不再是采用将标记与逻辑分离到不同文件这种人为地分离方式，而是通过将二者共同存放在一个松散耦合单元之中，来实现[关注点分离](https://en.wikipedia.org/wiki/Separation\_of\_concerns)。
 
 为了编译它，我们需要下载安装 Trad 语言的编译器：
 
@@ -340,13 +340,13 @@ npm install tradlang
 
 然后，使用 tradc 命令将 trad 语言代码编译为 C 代码：
 
-```text
+```
 tradc main.jsx
 ```
 
 之后使用 C 的编译器将它编译为可执行文件：
 
-```text
+```
 gcc -o main main.jsx.c -lLCUI
 ```
 
@@ -368,17 +368,15 @@ LCUI 的 xml 文件解析功能是由 libxml 库提供支持的，为了缩减 L
 
 **支持编译为  WebAssembly 并在浏览器端运行**
 
-详见 [\#207](https://github.com/lc-soft/LCUI/issues/207)。
+详见 [#207](https://github.com/lc-soft/LCUI/issues/207)。
 
 **重写 Trad 的编译器**
 
- Trad 的编译器的语法树和生成器的实现代码是混在一起的，代码中大量使用了 class 继承特性，导致功能模块间的耦合度较高，添加新语法解析支持的难度较大。为了解决这些问题，可以参考 [babel](https://github.com/babel/babel/tree/master/packages) 编译器的做法，将代码划分为语法树（AST）、解析器（Parser）、生成器（Generator）。 对于语法树的代码划分，可以参考 [babel-types](https://github.com/babel/babel/tree/master/packages/babel-types) 和 [babel-traverse](https://github.com/babel/babel/tree/master/packages/babel-traverse)，前者用于语法树结点的工具库，后者用于维护整棵树的状态，包括替换、移除和添加结点。
+&#x20;Trad 的编译器的语法树和生成器的实现代码是混在一起的，代码中大量使用了 class 继承特性，导致功能模块间的耦合度较高，添加新语法解析支持的难度较大。为了解决这些问题，可以参考 [babel](https://github.com/babel/babel/tree/master/packages) 编译器的做法，将代码划分为语法树（AST）、解析器（Parser）、生成器（Generator）。 对于语法树的代码划分，可以参考 [babel-types](https://github.com/babel/babel/tree/master/packages/babel-types) 和 [babel-traverse](https://github.com/babel/babel/tree/master/packages/babel-traverse)，前者用于语法树结点的工具库，后者用于维护整棵树的状态，包括替换、移除和添加结点。
 
- **制定 Trad 的语言规范文档**
+&#x20;**制定 Trad 的语言规范文档**
 
 文档的内容组织方式可参考 [TypeScript 的语言规范文档](https://github.com/microsoft/TypeScript/blob/master/doc/spec-ARCHIVED.md)。
-
-
 
 
 

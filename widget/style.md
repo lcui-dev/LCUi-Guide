@@ -102,7 +102,4 @@ LCUI_SetInterval(5, FadeOutAnimation_OnFrame, w);
 
 组件结构体中的 `computed_style` 成员通常只在更新和渲染组件时使用，大小为 328 字节，可以尝试移除它，让它只在更新和渲染组件前临时创建以节省内存占用。
 
-**纠正已匹配样式在组件结构体中的命名**
-
-已匹配样式在组件结构体中的名称是 `inherited_style`，但它记录的并不是从父级组件继承的样式，具有误导性，应该纠正为 `matched_style` 。
-
+****

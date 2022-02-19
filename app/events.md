@@ -40,7 +40,7 @@ int main(void)
 
 ### 事件对象
 
- 有时候在事件处理函数内部，你可能会看到一个固定指定名称的参数，例如`event`，`evt`或简单的`e`。 这被称为**事件对象**，它被自动传递给事件处理函数，以提供额外的信息。
+&#x20;有时候在事件处理函数内部，你可能会看到一个固定指定名称的参数，例如`event`，`evt`或简单的`e`。 这被称为**事件对象**，它被自动传递给事件处理函数，以提供额外的信息。
 
 你可以在 [include/LCUI/main.h](https://github.com/lc-soft/LCUI/blob/345031d74ca65225ec3623e0c92d448f54f5052b/include/LCUI/main.h#L109-L121) 中找到事件对象的定义：
 
@@ -113,14 +113,3 @@ enum MyCustomEvent {
     MY_CUSTOM_EVENT_D
 };
 ```
-
-### 待办事项
-
-**纠正事件的数据结构和函数的命名**
-
-LCUI 的核心事件对象的结构体命名用的是 `LCUI_SysEvent` ，绑定窗口事件的函数命名是 `LCUI_BindSysEvent` ，这两处的 Sys 所指的 System 并不是同一个，前者是指 LCUI 内部系统，后者是指操作系统，应该纠正它们的命名。
-
-**重新设计事件接口**
-
-事件解绑方式有 `eventId + eventHandler` 和 `eventHandlerId` 这两种，LCUI 提供了 `LCUI_UnbindEvent()` 函数作为第一种的实现，而第二种却没有，虽然早期版本提供了 `LCUI_UnbindEvent2()` 作为第二种方式的实现，但由于这是个糟糕的设计，在后续的更新中废弃了。我们可以借此机会为事件模块重新设计一套接口。
-

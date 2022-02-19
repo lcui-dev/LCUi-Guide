@@ -25,7 +25,7 @@ void LCUI_RunFrame(void)
 
 主循环的每次循环即为一帧，为了避免不必要的 CPU 资源占用，主循环的执行频率会受到帧率控制，预设的帧率限制是 120 帧每秒，也就是主循环每秒最多执行 120 遍，每帧至少占用约 8.33 毫秒的时间，如果一帧的耗时低于 8.33 毫秒则会利用剩下的时间进入休眠状态。
 
-如果你需要自定义帧率限制，可以调用 `LCUI_ApplySettings()` 修改全局设置中的 `frame_rate_cap` 设置项：
+如果你想要自定义帧率限制，可以调用 `LCUI_ApplySettings()` 修改全局设置中的 `frame_rate_cap` 设置项：
 
 ```c
 #include <LCUI.h>
@@ -103,7 +103,7 @@ LCUI_BOOL ShowConfirmDialog(const wchar_t* title, const wchar_t *content)
 ```
 
 {% hint style="info" %}
-这段代码省略了弹框组件的构造代码，如需了解完整的实现代码可以查看 LC Finder 项目中的 [src/ui/components/dialog\_confirm.c](https://github.com/lc-soft/LC-Finder/blob/573f200698e2604450665716ebc6608837b4b73a/src/ui/components/dialog_confirm.c) 文件。
+这段代码省略了弹框组件的构造代码，如需了解完整的实现代码可以查看 LC Finder 项目中的 [src/ui/components/dialog\_confirm.c](https://github.com/lc-soft/LC-Finder/blob/573f200698e2604450665716ebc6608837b4b73a/src/ui/components/dialog\_confirm.c) 文件。
 {% endhint %}
 
 在这段代码中，先定义了`DialogContextRec` 类型的 ctx 变量用于记录按钮点击状态和主循环的指针，然后为确认按和取消按钮绑定点击事件处理器，之后调用 `LCUIMainLop_New()` 新建了一个主循环，再调用 `LCUIMainLoop_Run()` 执行这个新的主循环。在按钮被点击后，事件处理器会修改 ctx 中的按钮点击状态，然后调用 `LCUIMainLoop_Quit()` 退出指定的主循环。在`LCUIMainLoop_Run()` 函数退出后，销毁弹框并将用户的操作结果返回。
@@ -153,6 +153,4 @@ while (your_app.active) {
     LCUI_RunFrame();
 }
 ```
-
-
 
